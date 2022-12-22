@@ -15,14 +15,19 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string("image_path");
+            $table->unsignedBigInteger("series_id");
+            $table->string("file_path");
             $table->text("question");
             $table->text("option1");
             $table->text("option2");
+            $table->text("option3")->nullable();
+            $table->text("option4")->nullable();
             $table->text("answer");
             $table->text("description");
-            $table->bigInteger("series_id");
+            $table->string("question_type");
             $table->timestamps();
+
+            $table->foreign('series_id')->references('id')->on('series');
         });
     }
 
@@ -33,6 +38,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('discovery_questions');
     }
 }

@@ -21,9 +21,9 @@
                             class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">
-                    <h3>Best Score: &nbsp; {{ $rec->best_score }}</h3>
-                    <h3>Completed Series: &nbsp; {{ $rec->completed_series }}</h3>
-                    <h3>Last Score: &nbsp; {{ $rec->last_score }}</h3>
+                    <p>Stressed about starting your code reviews? </p>
+
+                    <p> Embark in peace with these series of 10 easier questions</p>
                 </div>
             </div>
         </div>

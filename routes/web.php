@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [QuestionController::class, 'index']);
+Route::get('/', [SeriesController::class, 'index']);
 
-Route::get('/buffer/{id}', [QuestionController::class, 'buffer'])->middleware(['verified', 'auth']);
+Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/buffer', function () {
-    return view('buffer');
-})->middleware(['verified']);
+    Route::resource('/series', SeriesController::class);
+
+    Route::get('/buffer/{id}/discovery', [QuestionController::class, 'buffer_discovery']);
+
+    Route::get('/buffer/{id}/classic', [QuestionController::class, 'buffer_classic']);
+
+    Route::get('/discovery/{id}/question', [QuestionController::class, 'discovery_question']);
+
+    Route::get('/record', [QuestionController::class, 'record']);
+});
+
+
+
 
 Route::get('/result', function () {
     return view('result');

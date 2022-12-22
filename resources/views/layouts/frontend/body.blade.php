@@ -17,9 +17,9 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css" />
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/css/bootstrap.min.css') }}" />
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="asset/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/css/style.css') }}" />
     <!-- fevicon -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <!-- fonts -->
@@ -39,8 +39,7 @@
             ">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <!-- <a class="logo" href="index.html"><img src="images/logo.png" /></a> -->
-                <a href="index.html" class="logo" style="font-size: 25px">Take a Quiz</a>
+                <a href="/" class="logo" style="font-size: 25px">Take a Quiz</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

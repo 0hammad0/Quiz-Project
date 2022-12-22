@@ -13,7 +13,7 @@
                 @foreach ($disco as $disc)
                     @if ($disc)
                         <div class="col-md-6" style="padding-top: 5px">
-                            <a href="/buffer/{{ $disc->id }}">
+                            <a href="{{ route('series.show', $disc) }}">
                                 <button type="button" class="series-btn">
                                     {{ $disc->name }} &nbsp;&nbsp;&nbsp;
                                     <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
@@ -33,7 +33,7 @@
                 @foreach ($classic as $cla)
                     @if ($cla)
                         <div class="col-md-6" style="padding-top: 5px">
-                            <a href="/buffer">
+                            <a href="{{ route('series.show', $cla) }}">
                                 <button type="button" class="series-btn">
                                     {{ $cla->name }} &nbsp;&nbsp;&nbsp;
                                     <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
