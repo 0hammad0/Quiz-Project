@@ -22,14 +22,15 @@ Route::get('/', [SeriesController::class, 'index']);
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('/series', SeriesController::class);
+    Route::resource('/question', QuestionController::class);
 
-    Route::get('/buffer/{id}/discovery', [QuestionController::class, 'buffer_discovery']);
+    // Route::get('/buffer/{id}/discovery', [QuestionaaController::class, 'buffer_discovery']);
 
-    Route::get('/buffer/{id}/classic', [QuestionController::class, 'buffer_classic']);
+    // Route::get('/buffer/{id}/classic', [QuestionaaController::class, 'buffer_classic']);
 
-    Route::get('/discovery/{id}/question', [QuestionController::class, 'discovery_question']);
+    // Route::get('/discovery/{id}/question', [QuestionaaController::class, 'discovery_question']);
 
-    Route::get('/record', [QuestionController::class, 'record']);
+    // Route::get('/record', [QuestionaaController::class, 'record']);
 });
 
 

@@ -5,47 +5,85 @@
 @endsection
 
 @section('content')
-    <form action="/record" method="POST">
-        <div class="container mt-5">
-            <div class="container p-5">
-                <div class="card text-center">
-                    <div class="card-header">
-                        <a href="/">
-                            <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
-                        Series 1 - Question 1/10
-                    </div>
-                    @foreach ($dq as $dqs)
-                        <div class="card-body">
-                            <img src="{{ asset($dqs->image_path) }}" alt="caravan" />
-                            <hr />
-                            <h4>{{ $dqs->question }}</h4>
-                            <div class="container float-left">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="A" id="A"
-                                        value="A" />
-                                    <label class="form-check-label" for="A">
-                                        {{ $dqs->option1 }}
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="A" id="B"
-                                        value="B" />
-                                    <label class="form-check-label" for="B">
-                                        {{ $dqs->option2 }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <a type="button" class="btn btn-danger">Validate</a>
-                        </div>
+    <div class="container mt-5">
+        <div class="container p-5">
+            <div class="card text-center">
+                <div class="card-header">
+                    <a href="/">
+                        <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
+                    {{ $ser_qu->name }} - Question 1/{{ $ser_qu->quantity }}
                 </div>
-                @endforeach
-                @if ($dq->hasMorePages())
-                    <a href="{{ $dq->nextPageUrl() }}">Next</a>
-                @else
-                @endif
+                <div class="card-body">
+                    <img src="{{ asset($que->file_path) }}" alt="question image" />
+                    <hr />
+                    <h4 id="question">{{ $que->question }}</h4>
+
+                    <form action="{{ route('question.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="question_id" value="{{ $que->id }}" />
+                        <input type="hidden" name="series_id" value="{{ $ser_qu->id }}" />
+                        <input type="hidden" name="page_id" value="{{ $ser_qu->id }}" />
+
+                        <div class="container" id="question_set">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="A"
+                                        aria-label="Checkbox for following text input" id="op1" name="op1">
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with checkbox"
+                                    value="{{ $que->option1 }}" readonly>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="B"
+                                        aria-label="Checkbox for following text input" id="op2" name="op2">
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with checkbox"
+                                    value="{{ $que->option2 }}" readonly>
+                            </div>
+
+                            @if ($que->option3)
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text">
+                                        <input class="form-check-input mt-0" type="checkbox" value="C"
+                                            aria-label="Checkbox for following text input" id="op3" name="op3">
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Text input with checkbox"
+                                        value="{{ $que->option3 }}" readonly>
+                                </div>
+                            @endif
+
+                            @if ($que->option4)
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text">
+                                        <input class="form-check-input mt-0" type="checkbox" value="D"
+                                            aria-label="Checkbox for following text input" id="op4" name="op4">
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Text input with checkbox"
+                                        value="{{ $que->option4 }}" readonly>
+                                </div>
+                            @endif
+                        </div>
+                        <h3 id="ans_show"></h3>
+                        <p id="desc" style="display: none">{{ $que->description }}</p>
+                        <hr>
+                        <h4 id="correct_answer" style="display: none">Correct Answer: {{ $que->answer }}</h4>
+                        <h1 style="display: none" id="ans">{{ $que->answer }}</h1>
+                </div>
+                <div class="card-footer text-muted"
+                    style="    justify-content: center;
+                                display: flex;">
+                    <a class="btn btn-danger" style="color: white" onclick="validate()" id="validate">Validate</a>
+
+
+                    <button type="submit" class="btn btn-success" style="color: white; display: none"
+                        id="continue">Continue</button>
+                </div>
+
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 @endsection

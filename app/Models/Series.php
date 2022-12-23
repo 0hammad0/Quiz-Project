@@ -24,9 +24,9 @@ class Series extends Model
         return $this->hasMany('App\Models\Test');
     }
 
-    // public function scopeUserTests($query)
-    // {
-    //     // return $this->hasManyThrough('App\Models\User', 'App\Models\Test');
-    //     return $query->where('');
-    // }
+    public function userTests()
+    {
+        // return $this->hasOneThrough('App\Models\Test', 'App\Models\User', 'id', s);
+        // return $query->where('tests.user_id', auth()->user()->id);
+    }
 }

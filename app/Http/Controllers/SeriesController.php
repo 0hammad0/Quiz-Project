@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Series;
+use App\Models\Test;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -52,7 +54,25 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
-        dd($series->tests);
+        // dd($series->tests[0]->id);
+        // dd($series);
+        $rec = Test::where('user_id', auth()->user()->id)->where('series_id', $series->id)->first();
+        // $rec = $user->test;
+        // $rec = $series->userTests;
+        // dd($rsec);
+        if($rec)
+        {
+            return view('buffer', [
+                'rec' => $rec,
+                'rec_name' => $series
+            ]);
+        }
+        else
+        {
+            return view('Buffer_be', [
+                'rec' =>$series
+            ]);
+        }
     }
 
     /**

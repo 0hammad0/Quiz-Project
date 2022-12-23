@@ -112,6 +112,74 @@
     <script src="js/custom.js"></script>
     <script src="js/owl.carousel.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+    <script>
+        function validate() {
+            var a = document.getElementById("question_set");
+            var b = document.getElementById("validate");
+            var c = document.getElementById("continue");
+            var d = document.getElementById("desc");
+            var e = document.getElementById("question");
+            var f = document.getElementById("correct_answer");
+
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "block";
+            d.style.display = "block";
+            e.style.display = "none";
+            f.style.display = "block";
+
+            var ca1 = document.getElementById("op1");
+            var ca2 = document.getElementById("op2");
+
+            if (document.getElementById("op3")) {
+                var ca3 = document.getElementById("op3");
+
+                if (ca3.checked == true) {
+                    var c3 = ca3.value;
+                }
+            }
+
+            if (document.getElementById("op4")) {
+                var ca4 = document.getElementById("op4");
+
+                if (ca4.checked == true) {
+                    var c4 = ca4.value;
+                }
+            }
+
+            if (ca1.checked == true)
+                var c1 = ca1.value;
+
+            if (ca2.checked == true)
+                var c2 = ca2.value;
+
+            if (c1 == undefined)
+                c1 = "";
+
+            if (c2 == undefined)
+                c2 = "";
+
+            if (c3 == undefined)
+                c3 = "";
+
+            if (c4 == undefined)
+                c4 = "";
+
+            var result = "";
+            result = c1 + c2 +
+                c3 + c4;
+
+
+            var ans = document.getElementById("ans");
+            var ans_show = document.getElementById("ans_show");
+
+            if (result == ans.textContent)
+                ans_show.innerHTML = "Your answer is True";
+            else
+                ans_show.innerHTML = "Your answer is false";
+        }
+    </script>
 </body>
 
 </html>
