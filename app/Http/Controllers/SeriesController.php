@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Series;
 use App\Models\Test;
 use App\Models\User;
+use App\Models\Series;
 use Illuminate\Http\Request;
+use App\Models\CompletedQuestion;
+use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 
 class SeriesController extends Controller
 {
@@ -54,23 +57,31 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
-        // dd($series->tests[0]->id);
-        // dd($series);
         $rec = Test::where('user_id', auth()->user()->id)->where('series_id', $series->id)->first();
-        // $rec = $user->test;
-        // $rec = $series->userTests;
-        // dd($rsec);
-        if($rec)
-        {
+        $c_q = CompletedQuestion::where('user_id', Auth::user()->id)->where('series_id', $series->id)->first();
+
+        if($c_q && $rec){
             return view('buffer', [
                 'rec' => $rec,
-                'rec_name' => $series
+                'rec_name' => $series,
+                'ques_count' => $c_q
+            ]);
+        }
+        elseif($c_q)
+        {
+            $question = Question::where('series_id', $series->id)->get();
+            // dd($question[$c_q->question_count]);
+            return view('Buffer_be', [
+                'rec' => $series, // using series to access question
+                'question' => $question[$c_q->question_count], // using question id to access question
+                'ques_count' => $c_q
             ]);
         }
         else
         {
+            // dd($series);
             return view('Buffer_be', [
-                'rec' =>$series
+                'rec' => $series,
             ]);
         }
     }

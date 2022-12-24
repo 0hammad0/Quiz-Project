@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompletedQuestionsCreate extends Migration
+class CreateCompletedQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompletedQuestionsCreate extends Migration
      */
     public function up()
     {
-        Schema::create('completed_questions_create', function (Blueprint $table) {
+        Schema::create('completed_questions', function (Blueprint $table) {
             $table->id();
             $table->integer('question_count');
             $table->unsignedBigInteger('user_id');
@@ -32,6 +32,6 @@ class CreateCompletedQuestionsCreate extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('completed_quetions_create');
+        Schema::dropIfExists('completed_questions');
     }
 }

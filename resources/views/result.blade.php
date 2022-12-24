@@ -9,7 +9,7 @@
         <div class="container p-5">
             <div class="card text-center">
                 <div class="card-header">
-                    <a href="index.html">
+                    <a href="/">
                         <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
                     Series 1
                 </div>

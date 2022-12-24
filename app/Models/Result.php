@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompletedQuestion extends Model
+class Result extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['question_count', 'user_id', 'series_id'];
+    protected $fillable = ['user_id', 'series_id', 'score'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function serie()
-    {
-        return $this->belongsTo(Series::class);
     }
 }

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
-use App\Models\Series;
 use App\Models\Test;
+use App\Models\Series;
+use App\Models\Question;
 use App\Models\TestAnswer;
 use Illuminate\Http\Request;
+use App\Models\CompletedQuestion;
+use App\Models\Result;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 class QuestionController extends Controller
 {
@@ -17,13 +21,16 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $test = Test::find(request('id'));
-        $questions = Question::where('series_id', $test->series_id)->get();
-        // dd($questions);
-        if (count($questions) == $test->question_count) {
-            return redirect(route('question.show', $questions[0]->id));
-        }
-        return redirect(route('question.show', $questions[$test->question_count]->id));
+        // $test = Test::find(request('id'));
+        // dd(CompletedQuestion::where('id', request('id'))->where('user_id', Auth::user()->id)->first());
+        // $cq = CompletedQuestion::where('id', request('id'))->where('user_id', Auth::user()->id)->first();
+
+        // $questions = Question::where('series_id', $cq->series_id)->get();
+
+        // if (count($questions) == $cq->question_count) {
+        //     return redirect(route('question.show', $questions[0]->id));
+        // }
+        // return redirect(route('question.show', $questions[$cq->question_count]->id));
     }
 
     /**
@@ -44,9 +51,9 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $answer = $request->op1 ? $request->op1.',' : '';
-        $answer .= $request->op2 ? $request->op2.',' : '';
-        $answer .= $request->op3 ? $request->op3.',' : '';
+        $answer = $request->op1 ? $request->op1 : '';
+        $answer .= $request->op2 ? $request->op2 : '';
+        $answer .= $request->op3 ? $request->op3 : '';
         $answer .= $request->op4 ? $request->op4 : '';
 
         TestAnswer::updateOrCreate([
@@ -54,12 +61,56 @@ class QuestionController extends Controller
             'series_id' => $request->series_id,
             'question_id' => $request->question_id,
         ], ['answer' => $answer]);
-        if($request->next_page != 'no'){
-            return redirect($request->next_page);
-        }
-        // Test::createOrUpdate([],[])
-        return 'view';
 
+        //get all questions from db based on series id
+        // dd($request->series_id);
+        $cq = CompletedQuestion::where('series_id', $request->series_id)->where('user_id', Auth::user()->id)->first();
+
+        if($cq == null){
+            CompletedQuestion::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $request->series_id,
+                'question_count' => 1,
+            ]);
+        }
+        elseif($cq != null){
+            CompletedQuestion::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $request->series_id,
+            ], ['question_count' => $cq->question_count + 1,]);
+        }
+        // comparing answers
+
+        $user_answer = TestAnswer::where('series_id', $request->series_id)->where('user_id', Auth::user()->id)->where('question_id', $request->question_id)->get();
+
+        $ques_answer = Question::where('series_id', $request->series_id)->where('id', $request->question_id)->get();
+
+        // dd($user_answer[0]->answer);
+        // dd($ques_answer[0]->answer);
+
+        $res = Result::where('series_id', $request->series_id)->where('user_id', Auth::user()->id)->first();
+        // dd($res != null);
+
+        if($user_answer[0]->answer == $ques_answer[0]->answer){
+            if($res == null){
+                $score = '1';
+            }
+            elseif($res != null){
+                $score = $res->score + 1;
+            }
+            Result::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $request->series_id,
+            ], ['score' => $score]);
+        }
+        // else {
+        //     dd("Apka jawab ghalat hai");
+        // }
+
+        // dd($ques_id->question_id);
+
+        return redirect(route('question.edit', $request->series_id)); // sending series id
+        // moved down to edit function
     }
 
     /**
@@ -70,12 +121,32 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        $question = Question::find($id);
-        $ser = Series::find($question->series_id);
-        // dd($ser->questions()->paginate(1));
+        // dd($id);
+        $ser = Series::find($id);
+        $question = Question::where('series_id', $ser->id)->get();
+        $cq = CompletedQuestion::where('user_id', Auth::user()->id)->where('series_id', $id)->first();
+        if($cq != null){
+            // dd($question[$cq->question_count]);
+            $question = $question[$cq->question_count];
+        }
+        elseif($cq == null){
+            // dd($question);
+            $question = $question[0];
+        }
+
+        // dd($cq);
+        if($cq == null){
+            $count = '1';
+        }
+        if($cq != null){
+            $count = $cq->question_count + 1;
+        }
+        // dd($count);
         return view('question', [
             'que' => $question,
-            'ser_qu' => $ser
+            'ser_qu' => $ser,
+            'ques_count' => $count,
+            'total_ques' => count($ser->questions)
         ]);
     }
 
@@ -87,7 +158,83 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cq = CompletedQuestion::where('series_id', $id)->where('user_id', Auth::user()->id)->first();
+        $questions = Question::where('series_id', $id)->get();
+
+        $test = Test::where('user_id', Auth::user()->id)->where('series_id', $cq->series_id)->first();
+        // dd($test->completed_series + 1);
+        $qc = '0';
+        // if($cq->question_count == count($questions)){ // uncomment this line after testing
+            $a=1;
+            if($a = 1){
+
+            CompletedQuestion::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $id
+            ], ['question_count' => $qc,]);
+
+            if(Test::where('user_id', Auth::user()->id)->where('series_id', $cq->series_id)->first() == null){
+                Test::updateOrCreate([
+                    'user_id' => Auth::user()->id,
+                    'series_id' => $cq->series_id,
+                    'best_score' => '0',
+                    'last_score' => '0'
+                ], ['completed_series' => '1']);
+            }
+
+            if($test){
+                Test::updateOrCreate([
+                    'user_id' => Auth::user()->id,
+                    'series_id' => $cq->series_id,
+                    'best_score' => '0',
+                    'last_score' => '0'
+                ], ['completed_series' => $test->completed_series + 1]);
+            }
+
+            // need to test records update or save to the database
+            $res = Result::where('series_id', $id)->where('user_id', Auth::user()->id)->first();
+            $test = Test::where('user_id', Auth::user()->id)->where('series_id', $id)->first();
+            if($res != null){
+                if($res->score > $test->best_score){
+                    Test::updateOrCreate([
+                        'user_id' => Auth::user()->id,
+                        'series_id' => $id,
+                        'last_score' => $res->score,
+                    ], ['best_score' => $res->score]);
+                }
+                else {
+                    Test::updateOrCreate([
+                        'user_id' => Auth::user()->id,
+                        'series_id' => $id,
+                    ], ['last->score' => $res->score]);
+                }
+                // dd($res);
+                // comemitng ii fnas fjanljen ibf eifnluel bnfwhebflewf w lroen lorem
+            }
+
+
+            return view('result');
+        }
+        else
+        {
+            $question = Question::find($questions[$cq->question_count]->id);
+            $ser = Series::find($question->series_id);
+            $cq = CompletedQuestion::where('series_id', $ser->id)->where('user_id', Auth::user()->id)->first();
+
+            if($cq == null){
+                $count = '1';
+            }
+            if($cq != null){
+                $count = $cq->question_count + 1;
+            }
+
+            return view('question', [
+                'que' => $question,
+                'ser_qu' => $ser,
+                'ques_count' => $count,
+                'total_ques' => count($ser->questions)
+            ]);
+        }
     }
 
     /**

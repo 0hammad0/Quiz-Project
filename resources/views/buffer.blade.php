@@ -13,7 +13,7 @@
                 <h3 class="text-center">{{ $rec_name->series_type }} Series</h3>
 
                 <div class="container text-center pt-4">
-                    <a href="{{ route('question.index') }}?id={{ $rec->id }}"><i
+                    <a href="{{ route('question.show', $rec_name->id) }}"><i
                             class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">

@@ -11,7 +11,7 @@
                 <div class="card-header">
                     <a href="/">
                         <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
-                    {{ $ser_qu->name }} - Question 1/{{ $ser_qu->quantity }}
+                    {{ $ser_qu->name }} - Question {{ $ques_count }} of {{ $total_ques }}
                 </div>
                 <div class="card-body">
                     <img src="{{ asset($que->file_path) }}" alt="question image" />
