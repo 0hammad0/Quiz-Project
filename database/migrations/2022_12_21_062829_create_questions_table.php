@@ -16,7 +16,9 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("series_id");
-            $table->string("file_path");
+            $table->string("file_path")->nullable();
+            $table->string("audio_path")->nullable();
+            $table->string("video_path")->nullable();
             $table->text("question");
             $table->text("option1");
             $table->text("option2");

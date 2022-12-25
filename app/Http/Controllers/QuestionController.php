@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\CompletedQuestion;
 use App\Models\Result;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Ui\Presets\React;
 
 class QuestionController extends Controller
 {
@@ -103,11 +102,6 @@ class QuestionController extends Controller
                 'series_id' => $request->series_id,
             ], ['score' => $score]);
         }
-        // else {
-        //     dd("Apka jawab ghalat hai");
-        // }
-
-        // dd($ques_id->question_id);
 
         return redirect(route('question.edit', $request->series_id)); // sending series id
         // moved down to edit function
@@ -162,9 +156,10 @@ class QuestionController extends Controller
         $questions = Question::where('series_id', $id)->get();
 
         $test = Test::where('user_id', Auth::user()->id)->where('series_id', $cq->series_id)->first();
+        $res = Result::where('series_id', $id)->where('user_id', Auth::user()->id)->first();
         // dd($test->completed_series + 1);
         $qc = '0';
-        // if($cq->question_count == count($questions)){ // uncomment this line after testing
+        // if($cq->question_count == count($questions)){        // uncomment this line after testing
             $a=1;
             if($a = 1){
 
@@ -173,47 +168,52 @@ class QuestionController extends Controller
                 'series_id' => $id
             ], ['question_count' => $qc,]);
 
-            if(Test::where('user_id', Auth::user()->id)->where('series_id', $cq->series_id)->first() == null){
-                Test::updateOrCreate([
-                    'user_id' => Auth::user()->id,
-                    'series_id' => $cq->series_id,
-                    'best_score' => '0',
-                    'last_score' => '0'
-                ], ['completed_series' => '1']);
-            }
-
-            if($test){
-                Test::updateOrCreate([
-                    'user_id' => Auth::user()->id,
-                    'series_id' => $cq->series_id,
-                    'best_score' => '0',
-                    'last_score' => '0'
-                ], ['completed_series' => $test->completed_series + 1]);
-            }
-
-            // need to test records update or save to the database
-            $res = Result::where('series_id', $id)->where('user_id', Auth::user()->id)->first();
-            $test = Test::where('user_id', Auth::user()->id)->where('series_id', $id)->first();
-            if($res != null){
-                if($res->score > $test->best_score){
+            if($test == null){
+                if($res != null){
                     Test::updateOrCreate([
                         'user_id' => Auth::user()->id,
-                        'series_id' => $id,
+                        'series_id' => $cq->series_id,
+                    ], [
                         'last_score' => $res->score,
-                    ], ['best_score' => $res->score]);
+                        'best_score' => $res->score,
+                        'completed_series' => '1'
+                    ]);
                 }
-                else {
-                    Test::updateOrCreate([
-                        'user_id' => Auth::user()->id,
-                        'series_id' => $id,
-                    ], ['last->score' => $res->score]);
+            }
+            if($test != null){
+                if($res != null){
+                    if(($res->score) > ($test->best_score)){
+                        dd("best score");
+                        Test::updateOrCreate([
+                            'user_id' => Auth::user()->id,
+                            'series_id' => $cq->series_id,
+                        ], [
+                            'last_score' => $res->score,
+                            'best_score' => $res->score,
+                            'completed_series' => $test->completed_series + 1
+                        ]);
+                    }
+                    else{
+                        // dd($res->score);
+                        Test::updateOrCreate([
+                            'user_id' => Auth::user()->id,
+                            'series_id' => $cq->series_id,
+                            'best_score' => $test->best_score,
+                        ], [
+                            'last_score' => $res->score,
+                            'completed_series' => $test->completed_series + 1
+                        ]);
+                    }
                 }
-                // dd($res);
-                // comemitng ii fnas fjanljen ibf eifnluel bnfwhebflewf w lroen lorem
             }
 
+            // setting the default value of result after creating of result
+            Result::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $id,
+            ], ['score' => '0']);
 
-            return view('result');
+            return redirect('result'); // sending series id to result index
         }
         else
         {

@@ -121,13 +121,7 @@
             var d = document.getElementById("desc");
             var e = document.getElementById("question");
             var f = document.getElementById("correct_answer");
-
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "block";
-            d.style.display = "block";
-            e.style.display = "none";
-            f.style.display = "block";
+            var g = document.getElementById("hr");
 
             var ca1 = document.getElementById("op1");
             var ca2 = document.getElementById("op2");
@@ -148,36 +142,68 @@
                 }
             }
 
-            if (ca1.checked == true)
-                var c1 = ca1.value;
+            if (ca1.checked == true || ca2.checked == true || ca3.checked == true || ca4.checked == true) {
 
-            if (ca2.checked == true)
-                var c2 = ca2.value;
+                a.style.display = "none";
+                b.style.display = "none";
+                c.style.display = "block";
+                d.style.display = "block";
+                e.style.display = "none";
+                f.style.display = "block";
+                g.style.display = "block";
 
-            if (c1 == undefined)
-                c1 = "";
+                if (ca1.checked == true)
+                    var c1 = ca1.value;
 
-            if (c2 == undefined)
-                c2 = "";
+                if (ca2.checked == true)
+                    var c2 = ca2.value;
 
-            if (c3 == undefined)
-                c3 = "";
+                if (c1 == undefined)
+                    c1 = "";
 
-            if (c4 == undefined)
-                c4 = "";
+                if (c2 == undefined)
+                    c2 = "";
 
-            var result = "";
-            result = c1 + c2 +
-                c3 + c4;
+                if (c3 == undefined)
+                    c3 = "";
+
+                if (c4 == undefined)
+                    c4 = "";
+
+                var result = "";
+                result = c1 + c2 +
+                    c3 + c4;
 
 
-            var ans = document.getElementById("ans");
-            var ans_show = document.getElementById("ans_show");
+                var ans = document.getElementById("ans");
+                var ans_show = document.getElementById("ans_show");
 
-            if (result == ans.textContent)
-                ans_show.innerHTML = "Your answer is True";
-            else
-                ans_show.innerHTML = "Your answer is false";
+                if (result == ans.textContent)
+                    ans_show.innerHTML = "Your answer is True";
+                else
+                    ans_show.innerHTML = "Your answer is false";
+            }
+        }
+
+        function audio_play() {
+            var play = document.getElementById("play");
+            var pause = document.getElementById("pause");
+            var audio = document.getElementById("audio");
+
+            play.style.display = "none";
+            pause.style.display = "block";
+            audio.play();
+        }
+
+        function audio_pause() {
+            var play = document.getElementById("play");
+            var pause = document.getElementById("pause");
+            var audio = document.getElementById("audio");
+
+            play.style.display = "block";
+            pause.style.display = "none";
+            audio.pause();
+            audio.currentTime = 0;
         }
     </script>
 </body>

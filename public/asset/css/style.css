@@ -1062,3 +1062,7 @@ button {
     background-color: rgb(216, 238, 254);
     border-radius: 10px;
 }
+
+.ques-option {
+    cursor: pointer;
+}
