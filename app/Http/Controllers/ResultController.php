@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ResultController extends Controller
 {
@@ -13,7 +15,7 @@ class ResultController extends Controller
      */
     public function index()
     {
-        return view('result');
+        return "result index";
     }
 
     /**
@@ -45,7 +47,12 @@ class ResultController extends Controller
      */
     public function show($id)
     {
-        //
+        $test = Test::where('user_id', Auth::user()->id)->where('id', $id)->first();
+
+        return redirect(route('question.index', [
+            'series' => $test->series_id,
+            'test' => $test->id
+        ]));
     }
 
     /**

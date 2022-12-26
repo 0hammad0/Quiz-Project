@@ -64,22 +64,21 @@ class SeriesController extends Controller
             return view('buffer', [
                 'rec' => $rec,
                 'rec_name' => $series,
-                'ques_count' => $c_q
+                'ques_count' => count(Question::where('series_id', $series->id)->get())
             ]);
         }
         elseif($c_q)
         {
             $question = Question::where('series_id', $series->id)->get();
-            // dd($question[$c_q->question_count]);
+
             return view('Buffer_be', [
                 'rec' => $series, // using series to access question
                 'question' => $question[$c_q->question_count], // using question id to access question
-                'ques_count' => $c_q
+                'ques_count' => count(Question::where('series_id', $series->id)->get())
             ]);
         }
         else
         {
-            // dd($series);
             return view('Buffer_be', [
                 'rec' => $series,
             ]);

@@ -17,9 +17,16 @@
                             class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">
-                    <p>Stressed about starting your code reviews? </p>
+                    @if ($rec->series_type == 'discovery')
+                        <p>Stressed about starting your code reviews? </p>
 
-                    <p> Embark in peace with these series of 10 easier questions</p>
+                        <p> Embark in peace with these series of 10 easier questions 😎</p>
+                    @endif
+                    @if ($rec->series_type == 'classic')
+                        <p>In the beginning there were 40 questions, in the end there will be none left.</p>
+
+                        <p>Take your time, this is a workout! 😇</p>
+                    @endif
                 </div>
             </div>
         </div>

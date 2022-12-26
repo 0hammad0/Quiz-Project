@@ -17,9 +17,13 @@
                             class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">
-                    <h3>Best Score: &nbsp; {{ $rec->best_score }}/{{ $rec_name->quantity }} </h3>
-                    <h3>Completed Series: &nbsp; {{ $rec->completed_series }} Times</h3>
-                    <h3>Last Score: &nbsp; {{ $rec->last_score }}/{{ $rec_name->quantity }}</h3>
+                    <div class="container">
+                        <h3>Best Score: &nbsp; {{ $rec->best_score }}/{{ $ques_count }} </h3>
+                        <h3>Completed Series: &nbsp; {{ $rec->completed_series }} Times</h3>
+                        <h3>Last Score: &nbsp; {{ $rec->last_score }}/{{ $ques_count }}</h3>
+                    </div>
+                    <br />
+                    <a class="btn btn-outline-warning" href="/result/{{ $rec->id }}">last record</a>
                 </div>
             </div>
         </div>
