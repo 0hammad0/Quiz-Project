@@ -46,7 +46,16 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::user()->admin == 1) {
+            Series::create([
+                'name' => $request->series_name,
+                'quantity' => $request->quantity,
+                'series_type' => $request->series_type,
+            ]);
+            return redirect(route('adminpanel.index'));
+        } else {
+            return redirect(route("series.index"));
+        }
     }
 
     /**

@@ -8,7 +8,7 @@
     <div class="news_section layout_padding">
         <div class="container text-center">
             <h1 class="">Discovery series (10 questions)</h1>
-            <div class="row row-cols-2">
+            <div class="row row-cols-2" style="margin-bottom: 24px;">
 
                 @foreach ($disco as $disc)
                     @if ($disc)

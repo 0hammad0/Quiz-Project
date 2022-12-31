@@ -1074,3 +1074,18 @@ button {
 .img-size {
     width: 50%;
 }
+
+@media screen and (max-width: 992px) {
+    .logo-size {
+        font-size: 20px !important;
+    }
+    .logo {
+        width: 50% !important;
+    }
+    .ques-header {
+        font-size: 10px;
+    }
+    .doubt-btn {
+        font-size: 11px;
+    }
+}

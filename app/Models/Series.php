@@ -9,6 +9,8 @@ class Series extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'quantity', 'series_type'];
+
     public function questions()
     {
         return $this->hasMany('App\Models\Question');

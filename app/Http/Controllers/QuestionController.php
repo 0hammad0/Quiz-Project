@@ -49,7 +49,7 @@ class QuestionController extends Controller
 
         $j = count(FinalResult::where('series_id', $req->series)->where('user_id', Auth::user()->id)->get());
         for ($i=0; $i < $j; $i++) {
-            $ta = TestAnswer::where('series_id', $req->series)->where('question_id', $question[$i]->id)->where('user_id', Auth::user()->id)->first();
+            $ta = TestAnswer::where('series_id', $req->series)->where('question_id', $question[$i]->id)->where('user_id',   Auth::user()->id)->first();
 
 
             // question categories filtering start
@@ -171,7 +171,13 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::user()->admin == 1) {
+            return view('craete_question', [
+                'series' => Series::all()
+            ]);
+        } else {
+            return redirect(route("series.index"));
+        }
     }
 
     /**
@@ -434,6 +440,8 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ser = Series::findOrFail($id);
+        $ser->destroy();
+        return redirect(route('adminpanel.index'));
     }
 }

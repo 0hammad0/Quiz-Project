@@ -18,7 +18,6 @@ class CreateSeriesTable extends Migration
             $table->string("name");
             $table->integer("quantity");
             $table->string("series_type");
-            $table->integer("completed");
             $table->timestamps();
         });
     }

@@ -211,8 +211,9 @@
 
                 </div>
                 <div class="container">
-                    <div class="card-footer text-muted"><button type="button" class="btn btn-danger"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-danger doubt-btn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
                             A doubt? <br /> Our expert can answer that
                         </button>
                     </div>

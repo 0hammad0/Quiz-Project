@@ -8,7 +8,7 @@
     <div class="container mt-5">
         <div class="container p-5">
             <div class="card text-center">
-                <div class="card-header">
+                <div class="card-header ques-header">
                     <a href="/">
                         <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
                     {{ $ser_qu->name }} - Question {{ $ques_count }} of {{ $total_ques }}
