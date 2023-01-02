@@ -21,7 +21,7 @@ class CreateQuestionController extends Controller
                 $file = $request->file('image');
                 $tmpFilePath = public_path().'/asset/images/';
                 $file = $file->move($tmpFilePath, $filename);
-                $image = 'public/asset/images/'.$filename;
+                $image = 'asset/images/'.$filename;
             } else {
                 $image = "";
             }
@@ -33,7 +33,7 @@ class CreateQuestionController extends Controller
                 $file = $request->file('audio');
                 $tmpFilePath = public_path().'/asset/audio/';
                 $file = $file->move($tmpFilePath, $filename);
-                $audio = 'public/asset/audio/'.$filename;
+                $audio = 'asset/audio/'.$filename;
             } else {
                 $audio = "";
             }
@@ -45,7 +45,7 @@ class CreateQuestionController extends Controller
                 $file = $request->file('video');
                 $tmpFilePath = public_path().'/asset/video/';
                 $file = $file->move($tmpFilePath, $filename);
-                $video = 'public/asset/video/'.$filename;
+                $video = 'asset/video/'.$filename;
             } else {
                 $video = "";
             }

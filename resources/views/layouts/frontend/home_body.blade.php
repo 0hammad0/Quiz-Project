@@ -21,10 +21,33 @@
 </head>
 
 <body style="background-color: rgb(216, 231, 255)">
-    <div class="header_bg" style="box-shadow: 1px 0px 15px 0px black; background-color: rgb(253, 255, 252);">
-        <div class="container">
+
+    <div class="header_bg" style="box-shadow: 1px 0px 15px 0px black;background-color: rgb(253, 255, 252);">
+        <br />
+        <div class="header">
+            <div class="container row top-header">
+                <div class="col-md-4">
+                    <a href="/" class="logo logo-size logo-up" style="font-size: 25px;">PermisGo</a>
+                </div>
+                <div class="col-md-4">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <ul class="top-social">
+                        <li><i class="fab fa-instagram"></i></li>
+                        <li><i class="fab fa-twitter"></i></li>
+                        <li><i class="fab fa-youtube"></i></li>
+                        <li><i class="fab fa-facebook"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container head-container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a href="/" class="logo logo-size" style="font-size: 25px">PermisGO</a>
+                <a href="/" class="logo logo-size logo-down" style="font-size: 25px; display: none">PERMISGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -32,19 +55,28 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/') }}">Accueil</a>
+                        </li>
                         <li class="nav-item {{ Request::is('series') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('series.index') }}">Code de
-                                la Route</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">Driver's license</a>
+                            <a class="nav-link" href="{{ route('series.index') }}">Code de la Route</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Our Cars</a>
+                            <a class="nav-link" href="#">Permis de Conduir B</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Assistance</a>
-                        </li> --}}
+                            <a class="nav-link" href="#">Formation VTC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Formation TAXI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Examen</a>
+                        </li>
+                        <li class="nav-item {{ Request::is('create') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/create') }}">Contact us</a>
+                        </li>
                         @guest
                             <li class="nav-item ml-4">
                                 @if (Route::has('login'))
@@ -75,7 +107,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -87,7 +120,54 @@
         </div>
     </div>
 
+
     @yield('content')
+
+
+    <div class="footer_section layout_padding mt-3">
+        <div class="container">
+            <div class="footer_section_2">
+                <div class="row">
+                    <div class="col-lg-3 margin_top">
+                        <div class="call_text"><a href="#"><i class="fas fa-phone"></i><span
+                                    class="padding_left_15">Call Now +01 9876543210</span></a></div>
+                        <div class="call_text"><a href="#"><i class="far fa-envelope"></i><span
+                                    class="padding_left_15">demo@gmail.com</span></a></div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="information_main">
+                            <h4 class="information_text">DEMO</h4>
+                            <p class="many_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
+                                sapiente eum sequi dolorem quibusdam dolorum</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="information_main">
+                            <h4 class="information_text">Helpful Links</h4>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="news.html">News</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="information_main">
+                            <div class="footer_logo"><a href="index.html">
+                                    <h2 style="color: white">PermisGO</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
     <script src="{{ asset('asset/js/popper.min.js') }}"></script>
@@ -243,7 +323,9 @@
             }
         }
     </script>
+
     @yield('script')
+
 </body>
 
 </html>

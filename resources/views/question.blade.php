@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div class="container p-5">
             <div class="card text-center">
                 <div class="card-header ques-header">
@@ -21,7 +21,9 @@
                 </div>
                 <div class="card-body">
                     @if ($que->file_path != null)
-                        <img src="{{ asset($que->file_path) }}" alt="question image" />
+                        <div class="container">
+                            <img src="{{ asset($que->file_path) }}" alt="question image" />
+                        </div>
                     @endif
                     @if ($que->video_path != null)
                         <video src="{{ asset($que->video_path) }}" style="width: 100%" type="video/mp4" controls></video>
@@ -37,42 +39,50 @@
 
                         <div class="container" id="question_set">
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3" onclick="op1()">
                                 <div class="input-group-text">
+                                    <label for="op1">A</label>
                                     <input type="checkbox" value="A"
-                                        aria-label="Checkbox for following text input"id="op1" name="op1" />
+                                        aria-label="Checkbox for following text input"id="op1" name="op1"
+                                        hidden />
                                 </div>
-                                <label for="op1" class="form-control ques-option"
+                                <label for="op1" class="form-control ques-option" id="op1l"
                                     aria-label="Text input with checkbox">{{ $que->option1 }}</label>
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3" onclick="op2()">
                                 <div class="input-group-text">
+                                    <label for="op2">B</label>
                                     <input type="checkbox" value="B"
-                                        aria-label="Checkbox for following text input"id="op2" name="op2" />
+                                        aria-label="Checkbox for following text input"id="op2" name="op2"
+                                        hidden />
                                 </div>
-                                <label for="op2" class="form-control ques-option"
+                                <label for="op2" class="form-control ques-option" id="op2l"
                                     aria-label="Text input with checkbox">{{ $que->option2 }}</label>
                             </div>
 
                             @if ($que->option3)
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" onclick="op3()">
                                     <div class="input-group-text">
+                                        <label for="op3">C</label>
                                         <input type="checkbox" value="C"
-                                            aria-label="Checkbox for following text input"id="op3" name="op3" />
+                                            aria-label="Checkbox for following text input"id="op3" name="op3"
+                                            hidden />
                                     </div>
-                                    <label for="op3" class="form-control ques-option"
+                                    <label for="op3" class="form-control ques-option" id="op3l"
                                         aria-label="Text input with checkbox">{{ $que->option3 }}</label>
                                 </div>
                             @endif
 
                             @if ($que->option4)
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" onclick="op4()">
                                     <div class="input-group-text">
+                                        <label for="op4">D</label>
                                         <input type="checkbox" value="D"
-                                            aria-label="Checkbox for following text input"id="op4" name="op4" />
+                                            aria-label="Checkbox for following text input"id="op4" name="op4"
+                                            hidden />
                                     </div>
-                                    <label for="op4" class="form-control ques-option"
+                                    <label for="op4" class="form-control ques-option" id="op4l"
                                         aria-label="Text input with checkbox">{{ $que->option4 }}</label>
                                 </div>
                             @endif

@@ -249,11 +249,10 @@ button {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 10px;
-    padding-left: 35px;
-    font-size: 14px;
+    padding-right: 14px;
+    padding-left: 10px;
+    font-size: 16px;
     color: #000;
-    text-transform: uppercase;
 }
 
 .navbar-light .navbar-nav .active > .nav-link,
@@ -875,7 +874,7 @@ button {
     float: left;
     background-color: #202020;
     height: auto;
-    padding-bottom: 90px;
+    padding-bottom: 30px;
 }
 
 .mail_section {
@@ -938,7 +937,6 @@ button {
 .footer_section_2 {
     width: 100%;
     float: left;
-    margin-top: 100px;
 }
 
 .footer_logo {
@@ -1088,4 +1086,74 @@ button {
     .doubt-btn {
         font-size: 11px;
     }
+    .logo-up {
+        display: none;
+    }
+    .logo-down {
+        display: block !important;
+    }
+    .head-container {
+        max-width: 100%;
+        display: block !important;
+        justify-content: none !important;
+    }
+}
+
+.head-container {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1200px) {
+    .head-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px !important;
+        color: #000;
+    }
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.top-social {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.card-head {
+    font-size: 20px;
+}
+
+.card-mid {
+    font-size: 18px;
+}
+
+.contact_map {
+    height: 100%;
+    width: 100%;
+}
+
+.contact-ul {
+    font-size: 22px;
+}
+
+@media (max-width: 575px) {
+    .contact-ul {
+        padding-left: 15px;
+    }
+}
+
+.heading {
+    text-decoration: underline;
 }
