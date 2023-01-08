@@ -169,14 +169,15 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        // dd(Series::findOrFail($id));
         if(Auth::user()->admin == 1) {
             return view('craete_question', [
-                'series' => Series::all()
+                'series' => Series::findOrFail($id)
             ]);
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -192,6 +193,7 @@ class QuestionController extends Controller
         $answer .= $request->op2 ? $request->op2 : '';
         $answer .= $request->op3 ? $request->op3 : '';
         $answer .= $request->op4 ? $request->op4 : '';
+        $answer .= $request->op5 ? $request->op5 : '';
 
         TestAnswer::updateOrCreate([
             'user_id' => auth()->user()->id,
@@ -225,9 +227,10 @@ class QuestionController extends Controller
         $res = Result::where('series_id', $request->series_id)->where('user_id', Auth::user()->id)->first();
 
         // dd($res != null);
+
         if($user_answer[0]->answer == $ques_answer[0]->answer){
             if($res == null){
-                $score = '1';
+                $score = 1;
             }
             elseif($res != null){
                 $score = $res->score + 1;
@@ -236,6 +239,19 @@ class QuestionController extends Controller
                 'user_id' => Auth::user()->id,
                 'series_id' => $request->series_id,
             ], ['score' => $score]);
+        }
+        else {
+            if($res == null){
+                $score = 0;
+            }
+            elseif($res != null){
+                $score = $res->score + 0;
+            }
+            Result::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'series_id' => $request->series_id,
+            ], ['score' => $score]);
+
         }
 
         return redirect(route('question.edit', $request->series_id));
@@ -251,27 +267,44 @@ class QuestionController extends Controller
     {
         $ser = Series::find($id);
         $question = Question::where('series_id', $ser->id)->get();
-        $cq = CompletedQuestion::where('user_id', Auth::user()->id)->where('series_id', $id)->first();
-        if($cq != null){
-            $question = $question[$cq->question_count];
-        }
-        elseif($cq == null){
-            $question = $question[0];
-        }
 
-        if($cq == null){
-            $count = '1';
-        }
-        if($cq != null){
-            $count = $cq->question_count + 1;
-        }
+        if(count($question) != 0) {
+            $cq = CompletedQuestion::where('user_id', Auth::user()->id)->where('series_id', $id)->first();
+            if($cq != null){
+                $question = $question[$cq->question_count];
+            }
+            elseif($cq == null){
+                $question = $question[0];
+            }
 
-        return view('question', [
-            'que' => $question,
-            'ser_qu' => $ser,
-            'ques_count' => $count,
-            'total_ques' => count($ser->questions)
-        ]);
+            if($cq == null){
+                $count = '1';
+            }
+            if($cq != null){
+                $count = $cq->question_count + 1;
+            }
+
+            if ($ser->section_type != "Examens")
+            {
+                return view('question', [
+                    'que' => $question,
+                    'ser_qu' => $ser,
+                    'ques_count' => $count,
+                    'total_ques' => count($ser->questions),
+                ]);
+            }
+            else {
+                return view('examens_question', [
+                    'que' => $question,
+                    'ser_qu' => $ser,
+                    'ques_count' => $count,
+                    'total_ques' => count($ser->questions),
+                ]);
+            }
+        }
+        else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -350,6 +383,8 @@ class QuestionController extends Controller
                 'series_id' => $id
             ], ['question_count' => '0',]);
 
+            // dd($id);
+
             if($test == null){
                 if($res != null){
                     Test::updateOrCreate([
@@ -411,12 +446,22 @@ class QuestionController extends Controller
                 $count = $cq->question_count + 1;
             }
 
-            return view('question', [
-                'que' => $question,
-                'ser_qu' => $ser,
-                'ques_count' => $count,
-                'total_ques' => count($ser->questions)
-            ]);
+            if(Series::findOrFail($id)->section_type != "Examens") {
+                return view('question', [
+                    'que' => $question,
+                    'ser_qu' => $ser,
+                    'ques_count' => $count,
+                    'total_ques' => count($ser->questions)
+                ]);
+            }
+            else {
+                return view('examens_question', [
+                    'que' => $question,
+                    'ser_qu' => $ser,
+                    'ques_count' => $count,
+                    'total_ques' => count($ser->questions)
+                ]);
+            }
         }
     }
 

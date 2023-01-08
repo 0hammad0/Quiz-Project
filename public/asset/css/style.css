@@ -874,7 +874,8 @@ button {
     float: left;
     background-color: #202020;
     height: auto;
-    padding-bottom: 30px;
+    padding-bottom: 33px;
+    margin-top: 229px;
 }
 
 .mail_section {
@@ -1097,6 +1098,9 @@ button {
         display: block !important;
         justify-content: none !important;
     }
+    .q-btn {
+        font-size: 13px;
+    }
 }
 
 .head-container {
@@ -1156,4 +1160,13 @@ button {
 
 .heading {
     text-decoration: underline;
+}
+
+.btn-cus {
+    background-color: #5189e1;
+    border-radius: 25px;
+    padding-left: 20px;
+    border: 0px;
+    padding-right: 20px;
+    cursor: pointer;
 }

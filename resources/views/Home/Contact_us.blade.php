@@ -27,12 +27,18 @@
                 </div>
             </div>
             <div class="container-fluid mt-5">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem repellat cum, similique blanditiis
-                    ratione eius praesentium sunt eaque. Cumque reprehenderit ipsa nulla aliquam ab dignissimos!
-                    Repudiandae, esse consequatur? Ipsam, quam.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus quibusdam animi, a necessitatibus
-                    nobis atque deleniti quasi sequi, error iure deserunt dolorem nostrum! Voluptas reprehenderit a
-                    laudantium saepe, veniam ullam?</p>
+                <form action="POST">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="your email address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-cus" type="submit">Send</button>
+                </form>
             </div>
         </div>
     </div>

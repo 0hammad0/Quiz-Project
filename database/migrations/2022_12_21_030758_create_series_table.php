@@ -18,6 +18,8 @@ class CreateSeriesTable extends Migration
             $table->string("name");
             $table->integer("quantity");
             $table->string("series_type");
+            $table->string("section_type");
+            $table->string("belongs");
             $table->timestamps();
         });
     }

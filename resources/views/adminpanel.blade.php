@@ -48,6 +48,14 @@
                                                 Series Type
                                             </th>
                                             <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Section Type
+                                            </th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Belongs
+                                            </th>
+                                            <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             </th>
                                             <th class="text-secondary opacity-7"></th>
@@ -66,6 +74,12 @@
                                                 </td>
                                                 <td>
                                                     <p class="text-xs font-weight-bold mb-0">{{ $ser->series_type }}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">{{ $ser->section_type }}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">{{ $ser->belongs }}</p>
                                                 </td>
                                                 <td class="align-middle text-center"></td>
                                                 <td class="align-middle">

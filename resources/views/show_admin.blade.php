@@ -33,6 +33,9 @@
                                 <h6 class="text-white text-capitalize ps-3">
                                     List of Questions from {{ $series->name }}
                                 </h6>
+                                <a href="{{ url('question/create', $series->id) }}"
+                                    style="float: right; padding-right: 70px;" class="btn btn-primary">Create
+                                    Question</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">

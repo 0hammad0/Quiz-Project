@@ -13,19 +13,8 @@
     <div class="container m-5">
         <form action="/create_question" method="POST" enctype="multipart/form-data">
             @csrf
-            <select class="form-select" aria-label="Default select example" name="selected_series">
-                <option selected>Select belonging Series</option>
-                @foreach ($series as $ser)
-                    <option value="{{ $ser->id }}">{{ $ser->name }}</option>
-                @endforeach
-            </select>
-            <br />
-            <select class="form-select" aria-label="Default select example" name="series_type">
-                <option selected>Select series type</option>
-                @foreach ($series as $ser)
-                    <option value="{{ $ser->series_type }}">{{ $ser->series_type }}</option>
-                @endforeach
-            </select>
+            <input type="text" value="{{ $series->id }}" name="series_id" hidden>
+            <input type="text" value="{{ $series->series_type }}" name="series_type" hidden>
             <div class="mb-3">
                 <label for="question" class="form-label">Question</label>
                 <input type="text" name="question" class="form-control" id="question" value="">
@@ -59,6 +48,10 @@
                 <span class="input-group-text" id="Answer">Answer</span>
                 <input type="text" class="form-control" aria-label="Answer" aria-describedby="Answer"
                     placeholder="give the correct answer" name="answer" />
+            </div>
+            <div class="mb-3">
+                <label for="ans_video" class="form-label">Video for the Answer</label>
+                <input class="form-control" type="file" id="ans_video" name="ans_video">
             </div>
             <select class="form-select" aria-label="Default select example" name="theme">
                 <option selected>Select question theme</option>

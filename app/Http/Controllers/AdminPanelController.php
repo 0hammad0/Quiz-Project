@@ -21,7 +21,7 @@ class AdminPanelController extends Controller
                 'series' => Series::all()
             ]);
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -35,7 +35,7 @@ class AdminPanelController extends Controller
         if(Auth::user()->admin == 1) {
             return view('Series_create');
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -64,7 +64,7 @@ class AdminPanelController extends Controller
                 'series' => Series::findOrFail($id)
             ]);
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -81,7 +81,7 @@ class AdminPanelController extends Controller
                 'question' => Question::findOrFail($id)
             ]);
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Create Series</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -27,8 +27,21 @@
                 <select class="form-select" id="series_type" name="series_type" aria-label="Default select example"
                     required>
                     <option selected>Series Type</option>
-                    <option value="discovery">discovery</option>
-                    <option value="classic">classic</option>
+                    <option value="Code de la Route">Code de la Route</option>
+                    <option value="Permis de Conduir B">Permis de Conduir B</option>
+                    <option value="Formation VTC">Formation VTC</option>
+                    <option value="Formation TAXI">Formation TAXI</option>
+                </select>
+                <select class="form-select" id="section_type" name="section_type" aria-label="Default select example"
+                    required>
+                    <option selected>Section Type</option>
+                    <option value="simple">Simple Series</option>
+                    <option value="Examens">Examens Series</option>
+                </select>
+                <select class="form-select" id="belongs" name="belongs" aria-label="Default select example" required>
+                    <option selected>belongs to</option>
+                    <option value="discovery">Discovery Series</option>
+                    <option value="classic">Classic Series</option>
                 </select>
             </div>
             <br />

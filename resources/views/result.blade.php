@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container">
         <div class="container p-5">
             <div class="card text-center">
                 <div class="card-header">
-                    <a href="/">
+                    <a href="{{ url('/') }}">
                         <i class="fas fa-times float-left" style="font-size: x-large"></i></a>
                     {{ $series->name }}
                 </div>
@@ -83,7 +83,17 @@
                                                     type="video/mp4" controls></video>
                                             @endif
                                             <h4>{{ $fres->question }}</h4>
-                                            <h4>Your Answer: {{ $fres->user_answer }}</h4>
+                                            @if ($fres->question == 'E')
+                                                <h4>Time out</h4>
+                                            @else
+                                                <h4>
+                                                    @if ($fres->user_answer == 'E')
+                                                        Timed out
+                                                    @else
+                                                        Your Answer: {{ $fres->user_answer }}
+                                                    @endif
+                                                </h4>
+                                            @endif
                                             <p>{{ $fres->ques_desc }}</p>
                                         </div>
                                     </div>
@@ -222,7 +232,7 @@
         </div>
 
         <div class="container text-center">
-            <button class="btn btn-warning sticky-bottom"><a href="/">Home</a></button>
+            <button class="btn btn-warning sticky-bottom mb-5"><a href="/">Home</a></button>
         </div>
 
         <!-- Modal -->

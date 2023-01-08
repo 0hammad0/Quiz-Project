@@ -38,7 +38,7 @@ class CreateQuestionController extends Controller
                 $audio = "";
             }
 
-            // storing video
+            // storing Qestion video
             if($request->video){
 
                 $filename = time() . '_' . $request->file('video')->getClientOriginalName();
@@ -50,9 +50,21 @@ class CreateQuestionController extends Controller
                 $video = "";
             }
 
+            // storing Answer video
+            if($request->ans_video){
+
+                $filename = time() . '_' . $request->file('ans_video')->getClientOriginalName();
+                $file = $request->file('ans_video');
+                $tmpFilePath = public_path().'/asset/video/';
+                $file = $file->move($tmpFilePath, $filename);
+                $ans_video = 'asset/video/'.$filename;
+            } else {
+                $ans_video = "";
+            }
+
             $ques = new Question;
 
-            $ques->series_id = $request->selected_series;
+            $ques->series_id = $request->series_id;
             $ques->question_type = $request->series_type;
             $ques->question = $request->question;
             $ques->description = $request->correction;
@@ -68,18 +80,19 @@ class CreateQuestionController extends Controller
             else
                 $ques->option4 = "";
 
-            $ques->answer = $request->answer;
+            $ques->answer = strtoupper($request->answer);
             $ques->question_category = $request->theme;
 
             $ques->audio_path = $audio;
             $ques->video_path = $video;
             $ques->file_path = $image;
+            $ques->ans_video_path = $ans_video;
 
             $ques->save();
             return redirect(route('adminpanel.index'));
 
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -124,7 +137,17 @@ class CreateQuestionController extends Controller
                 $video = $request->video;
             }
 
-            $ques = new Question;
+            // storing Answer video
+            if($request->ans_video){
+
+                $filename = time() . '_' . $request->file('ans_video')->getClientOriginalName();
+                $file = $request->file('ans_video');
+                $tmpFilePath = public_path().'/asset/video/';
+                $file = $file->move($tmpFilePath, $filename);
+                $ans_video = 'asset/video/'.$filename;
+            } else {
+                $ans_video = "";
+            }
 
             Question::updateOrCreate([
                 'series_id' => $request->series_id,
@@ -140,11 +163,12 @@ class CreateQuestionController extends Controller
             ], [
                 'audio_path' => $audio,
                 'video_path' => $video,
-                'file_path' => $image,]);
+                'file_path' => $image,
+                'ans_video_path' => $ans_video]);
             return redirect(route('adminpanel.index'));
 
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
@@ -171,7 +195,7 @@ class CreateQuestionController extends Controller
             return redirect()->back();
         }
         else {
-            return redirect(route('adminpanel.index'));
+            return redirect(route('/'));
         }
     }
 }

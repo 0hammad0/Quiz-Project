@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string("file_path")->nullable();
             $table->string("audio_path")->nullable();
             $table->string("video_path")->nullable();
+            $table->string("ans_video_path")->nullable();
             $table->text("question");
             $table->text("option1");
             $table->text("option2");
@@ -27,6 +28,7 @@ class CreateQuestionsTable extends Migration
             $table->text("answer");
             $table->text("description");
             $table->string("question_type");
+            $table->string("question_category");
             $table->timestamps();
 
             $table->foreign('series_id')->references('id')->on('series');

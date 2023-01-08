@@ -21,7 +21,7 @@
 </head>
 
 <body style="background-color: rgb(216, 231, 255)">
-    <div class="header_bg" style="box-shadow: 1px 0px 15px 0px black; background-color: rgb(253, 255, 252);">
+    {{-- <div class="header_bg" style="box-shadow: 1px 0px 15px 0px black; background-color: rgb(253, 255, 252);">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a href="/" class="logo logo-size" style="font-size: 25px">PermisGO</a>
@@ -36,15 +36,6 @@
                             <a class="nav-link" href="{{ route('series.index') }}">Code de
                                 la Route</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">Driver's license</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Our Cars</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Assistance</a>
-                        </li> --}}
                         @guest
                             <li class="nav-item ml-4">
                                 @if (Route::has('login'))
@@ -85,7 +76,7 @@
                 </div>
             </nav>
         </div>
-    </div>
+    </div> --}}
 
     @yield('content')
 
@@ -131,7 +122,16 @@
                 }
             }
 
-            if (ca1.checked == true || ca2.checked == true || ca3.checked == true || ca4.checked == true) {
+            if (document.getElementById('op5')) {
+                var ca5 = document.getElementById('op5');
+
+                if (ca5.checked == true) {
+                    var c5 = ca5.value;
+                }
+            }
+
+            if (ca1.checked == true || ca2.checked == true || ca3.checked == true || ca4.checked == true || ca5.checked ==
+                true) {
 
                 a.style.display = "none";
                 b.style.display = "none";
@@ -159,9 +159,12 @@
                 if (c4 == undefined)
                     c4 = "";
 
+                if (c5 == undefined)
+                    c5 = "";
+
                 var result = "";
                 result = c1 + c2 +
-                    c3 + c4;
+                    c3 + c4 + c5;
 
 
                 var ans = document.getElementById("ans");
@@ -169,8 +172,20 @@
 
                 if (result == ans.textContent)
                     ans_show.innerHTML = "Your answer is True";
-                else
-                    ans_show.innerHTML = "Your answer is false";
+                else {
+                    if (result == "E")
+                        ans_show.innerHTML = "Time's out";
+                    else
+                        ans_show.innerHTML = "Your answer is false";
+                }
+
+                var im = document.getElementById('img');
+                var vd = document.getElementById('vid');
+                var ans_vd = document.getElementById('ans_video');
+
+                ans_vd.style.display = "block";
+                im.style.display = "none";
+                vd.style.display = "none";
             }
         }
 
@@ -198,48 +213,76 @@
         function op1() {
             var op1 = document.getElementById('op1l');
             var op1ch = document.getElementById('op1');
+            var div_op1 = document.getElementById('div_op1');
             // console.log(op1ch.checked);
 
             if (op1ch.checked == true) {
                 op1.style.borderColor = "orange";
+                op1.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                div_op1.style.backgroundColor = "rgb(57 197 89)";
+                div_op1.style.color = "white";
             } else {
                 op1.style.borderColor = "#CED4DA";
+                op1.style.boxShadow = "0px 0px 0px 0px #e7c17c";
+                div_op1.style.backgroundColor = "rgb(233,236,239)";
+                div_op1.style.color = "rgb(166,114,87)";
             }
         }
 
         function op2() {
             var op2 = document.getElementById('op2l');
             var op2ch = document.getElementById('op2');
+            var div_op1 = document.getElementById('div_op2');
             // console.log(op1ch.checked);
 
             if (op2ch.checked == true) {
                 op2.style.borderColor = "orange";
+                op2.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                div_op2.style.backgroundColor = "rgb(57 197 89)";
+                div_op2.style.color = "white";
             } else {
                 op2.style.borderColor = "#CED4DA";
+                op2.style.boxShadow = "0px 0px 0px 0px #e7c17c";
+                div_op2.style.backgroundColor = "rgb(233,236,239)";
+                div_op2.style.color = "rgb(166,114,87)";
             }
         }
 
         function op3() {
             var op3 = document.getElementById('op3l');
             var op3ch = document.getElementById('op3');
+            var div_op1 = document.getElementById('div_op3');
             // console.log(op1ch.checked);
 
             if (op3ch.checked == true) {
                 op3.style.borderColor = "orange";
+                op3.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                div_op3.style.backgroundColor = "rgb(57 197 89)";
+                div_op3.style.color = "white";
             } else {
                 op3.style.borderColor = "#CED4DA";
+                op3.style.boxShadow = "0px 0px 0px 0px #e7c17c";
+                div_op3.style.backgroundColor = "rgb(233,236,239)";
+                div_op3.style.color = "rgb(166,114,87)";
             }
         }
 
         function op4() {
             var op4 = document.getElementById('op4l');
             var op4ch = document.getElementById('op4');
+            var div_op1 = document.getElementById('div_op4');
             // console.log(op1ch.checked);
 
             if (op4ch.checked == true) {
                 op4.style.borderColor = "orange";
+                op4.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                div_op4.style.backgroundColor = "rgb(57 197 89)";
+                div_op4.style.color = "white";
             } else {
                 op4.style.borderColor = "#CED4DA";
+                op4.style.boxShadow = "0px 0px 0px 0px #e7c17c";
+                div_op4.style.backgroundColor = "rgb(233,236,239)";
+                div_op4.style.color = "rgb(166,114,87)";
             }
         }
     </script>

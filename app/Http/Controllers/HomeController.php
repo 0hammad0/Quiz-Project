@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SeriesType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Home.Home');
+        return view('Home.Home', [
+            'seriesType' => SeriesType::all()
+        ]);
+    }
+
+    public function pricing()
+    {
+        return view('Home.pricing', [
+            'seriesType' => SeriesType::all()
+        ]);
     }
 
     /**
@@ -23,7 +33,9 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('Home.Contact_us');
+        return view('Home.Contact_us', [
+            'seriesType' => SeriesType::all()
+        ]);
     }
 
     /**

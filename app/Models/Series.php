@@ -9,7 +9,7 @@ class Series extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'quantity', 'series_type'];
+    protected $fillable = ['name', 'quantity', 'series_type', 'section_type', 'belongs'];
 
     public function questions()
     {

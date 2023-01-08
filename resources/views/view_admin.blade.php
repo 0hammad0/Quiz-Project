@@ -24,7 +24,7 @@
             </div>
         </nav>
         <!-- End Navbar -->
-        <div class="container">
+        <div class="container card">
             <div class="container">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Question:</label>
@@ -91,6 +91,14 @@
                         <source src="{{ asset($question->audio_path) }}" type="audio/mpeg">
                     </audio>
                 @endif
+                <h4>Answer Video</h4>
+                <div class="mb-3">
+                    @if ($question->ans_video_path != null)
+                        <label for="answer_Video" class="form-label">Answer Video</label>
+                        <video id="answer_Video" src="{{ asset($question->ans_video_path) }}" style="width: 50%"
+                            type="video/mp4" controls></video>
+                    @endif
+                </div>
                 <a type="button" class="btn btn-primary" href="{{ url()->previous() }}">back</a>
                 <a type="button" class="btn btn-primary" href="{{ route('adminpanel.edit', $question->id) }}">Edit</a>
             </div>

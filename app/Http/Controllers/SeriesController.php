@@ -17,15 +17,20 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $classic = Series::getSeriesType('classic')->get();
-        $descovery = Series::getSeriesType('discovery')->get();
+        // dd($request);
+        // $classic = Series::getSeriesType('classic')->get();
+        // $descovery = Series::getSeriesType('discovery')->get();
+        // $Series = Series::getSeriesType('discovery')->get();
         // dd($classic);
-        return view('index', [
-            'classic' => $classic,
-            'disco' => $descovery
-        ]);
+        // return view('index', [
+        //     'Series' => $Series
+        // ]);
+        // return view('index', [
+        //     'classic' => $classic,
+        //     'disco' => $descovery
+        // ]);
     }
 
     /**
@@ -51,10 +56,12 @@ class SeriesController extends Controller
                 'name' => $request->series_name,
                 'quantity' => $request->quantity,
                 'series_type' => $request->series_type,
+                'section_type' => $request->section_type,
+                'belongs' => $request->belongs,
             ]);
             return redirect(route('adminpanel.index'));
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 
