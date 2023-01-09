@@ -32,7 +32,7 @@
         </div>
         <div class="container mt-2">
             <div class="row crd">
-                <div class="col-md-4 mt-2">
+                <div class="col-md-4 mt-2 text-center">
                     <div class="card" style="border-radius: 20px; box-shadow: 0px 0px 7px 0px #8282fb;">
                         <div class="container mt-2">
                             <h1>Code de la route</h1>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-2">
+                <div class="col-md-4 mt-2 text-center">
                     <div class="card" style="border-radius: 20px; box-shadow: 0px 0px 7px 0px #8282fb;">
                         <div class="container mt-2">
                             <h1>Permis de conduire </h1>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-2">
+                <div class="col-md-4 mt-2 text-center">
                     <div class="card" style="border-radius: 20px; box-shadow: 0px 0px 7px 0px #8282fb;">
                         <div class="container mt-2">
                             <h1>Perparation VTC</h1>

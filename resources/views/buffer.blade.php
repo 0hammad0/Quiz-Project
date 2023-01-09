@@ -14,7 +14,7 @@
 
                 <div class="container text-center pt-4">
                     <a href="{{ route('question.show', $rec_name->id) }}"><i
-                            class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large">aro</i></a>
+                            class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">
                     <div class="container">

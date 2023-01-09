@@ -14,7 +14,7 @@
 
                 <div class="container text-center pt-4">
                     <a href="{{ route('question.show', $rec->id) }}"><i
-                            class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large">aro</i></a>
+                            class="fas fa-arrow-circle-right float-end text-warning" style="font-size: xxx-large"></i></a>
                 </div>
                 <div class="container text-center">
                     {{-- @if ($rec->series_type == 'discovery') --}}
@@ -26,9 +26,9 @@
                         <p>In the beginning there were 40 questions, in the end there will be none left.</p>
 
                         <p>Take your time, this is a workout! 😇</p>
-                    @endif
-                </div> --}}
+                    @endif --}}
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
