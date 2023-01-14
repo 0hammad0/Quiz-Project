@@ -15,7 +15,7 @@ class ViewController extends Controller
                 'question' => Question::findOrFail($id)
             ]);
         } else {
-            return redirect(route("series.index"));
+            return redirect(route("/"));
         }
     }
 }

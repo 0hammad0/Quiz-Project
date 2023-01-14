@@ -1,7 +1,7 @@
 @extends('layouts.frontend.home_body')
 
 @section('title')
-    Quiz
+    PermisGo
 @endsection
 
 @section('content')

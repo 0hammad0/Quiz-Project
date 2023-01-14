@@ -26,9 +26,8 @@ class Series extends Model
         return $this->hasMany('App\Models\Test');
     }
 
-    public function userTests()
+    public function learningVideo()
     {
-        // return $this->hasOneThrough('App\Models\Test', 'App\Models\User', 'id', s);
-        // return $query->where('tests.user_id', auth()->user()->id);
+        return $this->hasMany(LearningVideo::class);
     }
 }

@@ -217,8 +217,8 @@
             // console.log(op1ch.checked);
 
             if (op1ch.checked == true) {
-                op1.style.borderColor = "orange";
-                op1.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                op1.style.borderColor = "rgb(57 197 89)";
+                op1.style.boxShadow = "0px 0px 4px 0px rgb(57 197 89)";
                 div_op1.style.backgroundColor = "rgb(57 197 89)";
                 div_op1.style.color = "white";
             } else {
@@ -236,8 +236,8 @@
             // console.log(op1ch.checked);
 
             if (op2ch.checked == true) {
-                op2.style.borderColor = "orange";
-                op2.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                op2.style.borderColor = "rgb(57 197 89)";
+                op2.style.boxShadow = "0px 0px 4px 0px rgb(57 197 89)";
                 div_op2.style.backgroundColor = "rgb(57 197 89)";
                 div_op2.style.color = "white";
             } else {
@@ -255,8 +255,8 @@
             // console.log(op1ch.checked);
 
             if (op3ch.checked == true) {
-                op3.style.borderColor = "orange";
-                op3.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                op3.style.borderColor = "rgb(57 197 89)";
+                op3.style.boxShadow = "0px 0px 4px 0px rgb(57 197 89)";
                 div_op3.style.backgroundColor = "rgb(57 197 89)";
                 div_op3.style.color = "white";
             } else {
@@ -274,8 +274,8 @@
             // console.log(op1ch.checked);
 
             if (op4ch.checked == true) {
-                op4.style.borderColor = "orange";
-                op4.style.boxShadow = "0px 0px 4px 0px #e7c17c";
+                op4.style.borderColor = "rgb(57 197 89)";
+                op4.style.boxShadow = "0px 0px 4px 0px rgb(57 197 89)";
                 div_op4.style.backgroundColor = "rgb(57 197 89)";
                 div_op4.style.color = "white";
             } else {

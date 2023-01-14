@@ -1170,3 +1170,47 @@ button {
     padding-right: 20px;
     cursor: pointer;
 }
+
+.stats_ul {
+    display: flex;
+    border-radius: 5px;
+}
+
+.state_li {
+    background-color: rgb(239, 241, 243);
+    border-radius: 2px;
+    font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media (max-width: 1494px) {
+    .state_number {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1426px) {
+    .state_number {
+        font-size: 2vh;
+    }
+}
+
+.stat-span {
+    font-size: 12px;
+    color: rgb(162, 162, 162);
+}
+
+.stat-box-sm {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .stat-box-sm {
+        display: block !important;
+    }
+
+    .stat-box-lg {
+        display: none !important;
+    }
+}

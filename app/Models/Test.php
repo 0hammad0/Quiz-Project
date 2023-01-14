@@ -9,5 +9,10 @@ class Test extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'series_id', 'best_score', 'last_score', 'completed_series'];
+    protected $fillable = ['user_id', 'series_id', 'best_score', 'last_score', 'completed_series', 'seriesType_id', 'sectionType'];
+
+    public function seriesType()
+    {
+        return $this->belongsTo(SeriesType::class);
+    }
 }

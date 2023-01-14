@@ -97,6 +97,12 @@
                         style="width: 50%" />
                 @endif
             </div>
+            <div class="mb-3">
+                @if ($question->ans_video_path != null)
+                    <label for="ans_video" class="form-label">Answer Video for the question</label>
+                    <input class="form-control" type="file" id="ans_video" name="ans_video">
+                @endif
+            </div>
             <br />
             <a type="button" class="btn btn-primary" href="{{ url()->previous() }}">Back</a>
             <button type="submit" class="btn btn-primary">Submit</button>

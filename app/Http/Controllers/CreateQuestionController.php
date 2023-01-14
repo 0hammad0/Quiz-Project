@@ -99,8 +99,6 @@ class CreateQuestionController extends Controller
     public function update_question(Request $request)
     {
         if(Auth::user()->admin == 1) {
-            $ques = Question::find($request->id);
-            // dd($ques->question_type);
 
             // storing image
             if($request->image){
@@ -164,7 +162,9 @@ class CreateQuestionController extends Controller
                 'audio_path' => $audio,
                 'video_path' => $video,
                 'file_path' => $image,
-                'ans_video_path' => $ans_video]);
+                'ans_video_path' => $ans_video,
+                'ans_video_path' => $request->ans_video
+            ]);
             return redirect(route('adminpanel.index'));
 
         } else {
@@ -189,13 +189,32 @@ class CreateQuestionController extends Controller
 
         $final_result->delete();
         $test_answer->delete();
+        // dd(public_path().('/').$ques->file_path);
+
+            if($ques->file_path){
+                unlink(public_path().('/').$ques->file_path);
+        }
+
+            if($ques->audio_path){
+                unlink(public_path().('/').$ques->audio_path);
+        }
+
+            if($ques->video_path){
+                unlink(public_path().('/').$ques->video_path);
+        }
+
+            if($ques->ans_video_path){
+                unlink(public_path().('/').$ques->ans_video_path);
+        }
+
+
         $ques->delete();
         if($ques)
         {
             return redirect()->back();
         }
         else {
-            return redirect(route('/'));
+            return redirect(route('adminpanel.index'));
         }
     }
 }

@@ -31,14 +31,6 @@
         <hr class="horizontal light mt-0 mb-2" />
         <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
-                {{-- <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url('/series_type') }}">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Create Series Type</span>
-                    </a>
-                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ url('/adminpanel') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -53,6 +45,46 @@
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
                         <span class="nav-link-text ms-1">Create Series</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Articles
+                    </h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url('articles/typeCreate') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Craete Articles Type</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url('articles/craete') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Create Articles Title</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url('articles/article/menu') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">All Articles</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Videos
+                    </h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url('/learning-Video/menu') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Videos Menu</span>
                     </a>
                 </li>
             </ul>

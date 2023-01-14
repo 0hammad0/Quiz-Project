@@ -249,7 +249,7 @@
 
         $(document).ready(function() {
             var timer = document.getElementById('timer');
-            var time = 3;
+            var time = 5;
             var time_qu = setInterval(timerr, 1000);
 
             function timerr() {

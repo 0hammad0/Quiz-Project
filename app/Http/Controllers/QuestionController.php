@@ -10,6 +10,7 @@ use App\Models\TestAnswer;
 use App\Models\FinalResult;
 use Illuminate\Http\Request;
 use App\Models\CompletedQuestion;
+use App\Models\SeriesType;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -189,6 +190,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+
         $answer = $request->op1 ? $request->op1 : '';
         $answer .= $request->op2 ? $request->op2 : '';
         $answer .= $request->op3 ? $request->op3 : '';
@@ -385,11 +387,16 @@ class QuestionController extends Controller
 
             // dd($id);
 
+            $ser = Series::findOrFail($id)->series_type;
+            // dd(Series::findOrFail($id)->section_type);
+
             if($test == null){
                 if($res != null){
                     Test::updateOrCreate([
                         'user_id' => Auth::user()->id,
                         'series_id' => $cq->series_id,
+                        'seriesType_id' => SeriesType::where('seriesType', $ser)->first('id')->id,
+                        'sectionType' => Series::findOrFail($id)->section_type
                     ], [
                         'last_score' => $res->score,
                         'best_score' => $res->score,
@@ -403,6 +410,8 @@ class QuestionController extends Controller
                         Test::updateOrCreate([
                             'user_id' => Auth::user()->id,
                             'series_id' => $cq->series_id,
+                            'seriesType_id' => SeriesType::where('seriesType', $ser)->first('id')->id,
+                            'sectionType' => Series::findOrFail($id)->section_type
                         ], [
                             'last_score' => $res->score,
                             'best_score' => $res->score,
@@ -414,6 +423,8 @@ class QuestionController extends Controller
                             'user_id' => Auth::user()->id,
                             'series_id' => $cq->series_id,
                             'best_score' => $test->best_score,
+                            'seriesType_id' => SeriesType::where('seriesType', $ser)->first('id')->id,
+                            'sectionType' => Series::findOrFail($id)->section_type
                         ], [
                             'last_score' => $res->score,
                             'completed_series' => $test->completed_series + 1

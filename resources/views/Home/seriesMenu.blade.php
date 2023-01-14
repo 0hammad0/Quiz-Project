@@ -26,7 +26,7 @@
                     </a>
                 </div>
                 <div class="col-md-6" style="padding-top: 5px">
-                    <a href="">
+                    <a href="{{ url('/statistiques', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Statistiques
                             <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
@@ -47,7 +47,7 @@
             <h1 class="">Revisitions mes cours</h1>
             <div class="row row-cols-2" style="margin-bottom: 24px;">
                 <div class="col-md-6" style="padding-top: 5px">
-                    <a href="">
+                    <a href="{{ url('/articles', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Articles
                             <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
@@ -55,7 +55,7 @@
                     </a>
                 </div>
                 <div class="col-md-6" style="padding-top: 5px">
-                    <a href="">
+                    <a href={{ url('/learning-Video', $seriesTypeID->id) }}>
                         <button type="button" class="series-btn q-btn">
                             Learning
                             <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>

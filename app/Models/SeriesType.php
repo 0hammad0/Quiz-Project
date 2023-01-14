@@ -12,4 +12,14 @@ class SeriesType extends Model
     protected $fillable = [
         'seriestype',
     ];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function Tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }
