@@ -13,6 +13,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CreateQuestionController;
 use App\Http\Controllers\LearningVideoController;
+use App\Http\Controllers\MistakeController;
 use App\Http\Controllers\StatsController;
 
 // Guest Area
@@ -72,6 +73,14 @@ Route::middleware(['auth'])->group(function () {
 
     // Statistiques
     Route::get('/statistiques/{id}', [StatsController::class, 'statistiques']);
+
+    // Mistakes
+    Route::resource('mistakes', MistakeController::class);
+
+    // Add logo
+    Route::get('/logo_change', [ViewController::class, 'logo_change']);
+    Route::POST('/logoChaning', [ViewController::class, 'chaningLogo']);
+    Route::POST('/logoSelection', [ViewController::class, 'logoSelection']);
 });
 
 // Google LoginURL

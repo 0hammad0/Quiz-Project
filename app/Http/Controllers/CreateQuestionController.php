@@ -92,7 +92,7 @@ class CreateQuestionController extends Controller
             return redirect(route('adminpanel.index'));
 
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 
@@ -168,7 +168,7 @@ class CreateQuestionController extends Controller
             return redirect(route('adminpanel.index'));
 
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 

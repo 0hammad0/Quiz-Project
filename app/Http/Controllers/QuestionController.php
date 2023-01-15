@@ -10,6 +10,7 @@ use App\Models\TestAnswer;
 use App\Models\FinalResult;
 use Illuminate\Http\Request;
 use App\Models\CompletedQuestion;
+use App\Models\Mistake;
 use App\Models\SeriesType;
 use Illuminate\Support\Facades\Auth;
 
@@ -178,7 +179,7 @@ class QuestionController extends Controller
                 'series' => Series::findOrFail($id)
             ]);
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 
@@ -190,12 +191,37 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        $seriesTypeId = SeriesType::where('seriestype', Series::findOrFail($request->series_id)->series_type)
+        ->first('id')->id;
 
         $answer = $request->op1 ? $request->op1 : '';
         $answer .= $request->op2 ? $request->op2 : '';
         $answer .= $request->op3 ? $request->op3 : '';
         $answer .= $request->op4 ? $request->op4 : '';
         $answer .= $request->op5 ? $request->op5 : '';
+
+        if(Question::findOrFail($request->question_id)->answer == $answer) {
+            Mistake::updateOrCreate([
+                'user_id' => Auth::id(),
+                'series_id' => $request->series_id,
+                'question_id' => $request->question_id,
+                'seriesType_id' => $seriesTypeId,
+                'sectionType' => Series::findOrFail($request->series_id)->section_type,
+            ], [
+                'result' => 'T'
+            ]);
+        }
+        else {
+            Mistake::updateOrCreate([
+                'user_id' => Auth::id(),
+                'series_id' => $request->series_id,
+                'question_id' => $request->question_id,
+                'seriesType_id' => $seriesTypeId,
+                'sectionType' => Series::findOrFail($request->series_id)->section_type,
+            ], [
+                'result' => 'F'
+            ]);
+        }
 
         TestAnswer::updateOrCreate([
             'user_id' => auth()->user()->id,

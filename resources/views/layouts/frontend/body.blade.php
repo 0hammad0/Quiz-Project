@@ -21,77 +21,21 @@
 </head>
 
 <body style="background-color: rgb(216, 231, 255)">
-    {{-- <div class="header_bg" style="box-shadow: 1px 0px 15px 0px black; background-color: rgb(253, 255, 252);">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a href="/" class="logo logo-size" style="font-size: 25px">PermisGO</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {{ Request::is('series') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('series.index') }}">Code de
-                                la Route</a>
-                        </li>
-                        @guest
-                            <li class="nav-item ml-4">
-                                @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a id="navbar" class="nav-link" href="#" role="button" aria-haspopup="true"
-                                    aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                            </li>
-                            <li>
-                                <div class="nav-item">
-                                    <a class="nav-link" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div> --}}
 
     @yield('content')
 
-    <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
     <script src="{{ asset('asset/js/popper.min.js') }}"></script>
     <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('asset/js/jquery-3.0.0.min.js') }}"></script>
     <script src="{{ asset('asset/js/plugin.js') }}"></script>
     <script src="{{ asset('asset/js/jquery.mCustomScrollbar.concat.min.j') }}s"></script>
-    <script src="{{ asset('asset/js/custom.js') }}"></script>
-    <script src="{{ asset('asset/js/owl.carousel.js') }}"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="{{ asset('asset/js/custom.js') }}"></script> --}}
+    {{-- <script src="{{ asset('asset/js/owl.carousel.js') }}"></script>     --}}
+    {{-- <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
-    </script>
+    </script> --}}
 
     <script>
         function validate() {

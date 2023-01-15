@@ -34,10 +34,14 @@
                     </a>
                 </div>
                 <div class="col-md-6" style="padding-top: 5px">
-                    <a href="">
+                    <a href="{{ route('mistakes.show', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Mes erreurs
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            @if ($mistakes == 0)
+                                <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            @else
+                                <span class="mistakes">{{ $mistakes }}</span>
+                            @endif
                         </button>
                     </a>
                 </div>

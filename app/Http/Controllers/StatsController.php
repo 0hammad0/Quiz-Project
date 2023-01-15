@@ -31,6 +31,18 @@ class StatsController extends Controller
         ->where('sectionType', 'simple')
         ->get();
 
+        $graph = Test::select(DB::raw('CAST(last_score as UNSIGNED) as count'))->where('user_id', Auth::user()->id)
+        ->where('seriesType_id', $seriesTypeId->id)
+        ->where('sectionType', 'simple')
+        ->get('last_score')
+        ->pluck('count');
+
+        $date = Test::select('updated_at')
+        ->where('user_id', Auth::user()->id)
+        ->where('seriesType_id', $seriesTypeId->id)
+        ->where('sectionType', 'simple')
+        ->pluck('updated_at');
+
         $testlatest = Test::where('user_id', Auth::user()->id)
         ->where('seriesType_id', $seriesTypeId->id)
         ->latest();
@@ -39,13 +51,6 @@ class StatsController extends Controller
         foreach($test as $tests) {
             $averageGrade =$averageGrade + $tests->best_score;
         }
-
-        $graph = Test::select(DB::raw("COUNT(*) as count"))
-                    ->where('user_id', Auth::user()->id)
-                    ->where('seriesType_id', $seriesTypeId->id)
-                    ->whereYear('created_at', date('Y'))
-                    ->groupBy(DB::raw("Month(created_at)"))
-                    ->pluck('count');
 
         // Average Grade
         if(count($test) == 0)
@@ -80,18 +85,16 @@ class StatsController extends Controller
         ->where('seriesType_id', $seriesTypeId->id)
         ->latest()->first();
 
-        // dd($testlatest);
         if($testlatest != null)
             $st = $testlatest->updated_at->format('d-m-y');
         else
             $st = "0-0-0";
-        // dd($st);
+
         if($st == Carbon::today()->format('d-m-y'))
         {
             $isStats = Stats::where('user_id', Auth::id())
             ->where('seriesType_id', $seriesTypeId->id)
             ->first();
-            // dd($isStats);
 
             if($isStats != null) {
                 $countStreak = $isStats->streak;
@@ -148,6 +151,7 @@ class StatsController extends Controller
 
         return view('Home.statistiques', ([
             'graph' => $graph,
+            'graphDate' => $date,
             'series' => $series,
             'test' => $test,
             'averageGrade' => $avgGrade,

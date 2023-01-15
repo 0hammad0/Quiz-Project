@@ -146,49 +146,33 @@
         var userData = <?php echo json_encode($graph); ?>;
         Highcharts.chart('container', {
             title: {
-                text: 'Progression'
-            },
-            subtitle: {
-                text: ''
+                text: 'Progress'
             },
             xAxis: {
-                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                    'October', 'November', 'December'
-                ]
-            },
-            yAxis: {
+                tickInterval: 1,
+                type: "logarithmic",
                 title: {
-                    text: 'Score'
+                    text: 'Good answers over the period'
+                },
+
+                accessibility: {
+                    rangeDescription: 'Range: 1 to 10'
                 }
             },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
-            plotOptions: {
-                series: {
-                    allowPointSelect: true
+            yAxis: {
+                name: 'Score',
+                type: "logarithmic",
+                minorTickInterval: 0.1,
+                accessibility: {
+                    rangeDescription: 'Range: 0.1 to 1000'
                 }
             },
             series: [{
-                name: 'Series',
-                data: userData
-            }],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            layout: 'horizontal',
-                            align: 'center',
-                            verticalAlign: 'bottom'
-                        }
-                    }
-                }]
-            }
+                name: 'Answers',
+                type: 'line',
+                data: userData,
+                pointStart: 1
+            }, ]
         });
     </script>
 @endsection

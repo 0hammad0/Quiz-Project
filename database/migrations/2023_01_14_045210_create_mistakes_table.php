@@ -15,7 +15,18 @@ class CreateMistakesTable extends Migration
     {
         Schema::create('mistakes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('series_id');
+            $table->unsignedBigInteger('question_id');
+            $table->unsignedBigInteger('seriesType_id');
+            $table->string('sectionType');
+            $table->string('result');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('series_id')->references('id')->on('series');
+            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('seriesType_id')->references('id')->on('series_types');
         });
     }
 
