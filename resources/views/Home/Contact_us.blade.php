@@ -1,4 +1,4 @@
-@extends('layouts.frontend.home_body_old')
+@extends('layouts.frontend.home_body')
 
 @section('title')
     PermisGO Contact Us
@@ -14,9 +14,9 @@
                 <div class="col-smd-6 mt-auto">
                     <ul class="contact-ul">
                         <li>PermisGo<br /> <br />
-                        <li><i class="fa-solid fa-phone"> </i> +12 3456789</li> <br />
-                        <li><i class="fa-solid fa-envelope"> </i> Demo@gmail.com</li> <br />
-                        <li><i class="fa-solid fa-location-dot"></i> Mars street # 12, House # 33</li> <br />
+                        <li><i class="fa-solid fas fa-phone"> </i> +12 3456789</li> <br />
+                        <li><i class="fa-solid fas fa-envelope"> </i> Demo@gmail.com</li> <br />
+                        <li><i class="fas fa-map"></i> Mars street # 12, House # 33</li> <br />
                     </ul>
                 </div>
                 <div class="col-md-6 text-center">

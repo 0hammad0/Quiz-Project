@@ -10503,3 +10503,110 @@ h6,
 .nav-link-bold {
     font-weight: bold;
 }
+
+.series-btn {
+    background-color: rgb(253, 255, 252);
+    width: 45%;
+    font-size: 18px;
+    height: 90%;
+    border-radius: 10px;
+    margin: 10px;
+    transition: 0.5s;
+}
+
+@media (max-width: 1199px) {
+    .series-btn {
+        background-color: rgb(253, 255, 252);
+        width: 55% !important;
+        font-size: 18px;
+        height: 90%;
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .series-btn {
+        background-color: rgb(253, 255, 252);
+        width: 75% !important;
+        font-size: 18px;
+        height: 90%;
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .series-btn {
+        background-color: rgb(253, 255, 252);
+        width: 100% !important;
+        font-size: 18px;
+        height: 90%;
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 527px) {
+    .series-btn {
+        background-color: rgb(253, 255, 252);
+        width: 95% !important;
+        font-size: 12px;
+        height: 90%;
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 397px) {
+    .series-btn {
+        background-color: rgb(253, 255, 252);
+        width: 100% !important;
+        font-size: 12px;
+        height: 90%;
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
+
+.series-btn:hover {
+    background-color: rgb(255, 194, 164);
+}
+
+.series-btn:active {
+    background-color: rgb(254, 173, 132);
+}
+
+.mistakes {
+    background-color: rgb(220, 53, 69);
+    border-radius: 14px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: white;
+    font-size: 17px;
+    margin-left: 37px;
+}
+
+.contact-ul {
+    font-size: 22px;
+    list-style-type: none;
+}
+
+@media (max-width: 575px) {
+    .contact-ul {
+        padding-left: 15px;
+        list-style-type: none;
+    }
+}
+
+.contact_map {
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .btn-md-center {
+        display: inline-grid;
+        justify-content: center;
+    }
+}

@@ -1,11 +1,11 @@
 .section-i-1 {
     font-size: 20px;
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 .section-i-2 {
     font-size: 20px;
-    margin-left: 40px;
+    margin-left: 15px;
 }
 
 .section-i-3 {
@@ -15,28 +15,43 @@
 
 .section-i-4 {
     font-size: 20px;
-    margin-left: 80px;
+    margin-left: 52px;
 }
 
 .section-i-5 {
     font-size: 20px;
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 .section-i-6 {
     font-size: 20px;
-    margin-left: 100px;
+    margin-left: 75px;
+}
+
+.section-s-1 {
+    font-size: 20px;
+    margin-left: 120px;
+}
+
+.section-s-2 {
+    font-size: 20px;
+    margin-left: 120px;
+}
+
+.section-e-1 {
+    font-size: 20px;
+    margin-left: 120px;
 }
 
 @media (max-width: 1186px) {
     .mistakes {
         background-color: rgb(220, 53, 69);
         border-radius: 14px;
-        padding-right: 7px;
-        padding-left: 7px;
+        padding-right: 5px;
+        padding-left: 5px;
         color: white;
         font-size: 17px;
-        margin-left: 44px;
+        margin-left: 20px;
     }
 
     .section-i-1 {
@@ -61,76 +76,125 @@
 
     .section-i-5 {
         font-size: 20px;
-        margin-left: 80px;
+        margin-left: 58px;
     }
 
     .section-i-6 {
         font-size: 20px;
-        margin-left: 71px;
+        margin-left: 50px;
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 452px) {
     .section-i-1 {
         font-size: 20px;
         margin-left: 40px;
+        display: none;
     }
 
     .section-i-2 {
         font-size: 20px;
         margin-left: 30px;
+        display: none;
     }
 
     .section-i-3 {
         font-size: 20px;
         margin-left: 60px;
+        display: none;
     }
 
     .section-i-4 {
         font-size: 20px;
         margin-left: 62px;
+        display: none;
     }
 
     .section-i-5 {
         font-size: 20px;
         margin-left: 88px;
+        display: none;
     }
 
     .section-i-6 {
         font-size: 20px;
         margin-left: 80px;
+        display: none;
+    }
+
+    .sec_img {
+        height: 3vh !important;
+    }
+
+    .section-s-1 {
+        font-size: 20px;
+        margin-left: 85px;
+    }
+
+    .section-s-2 {
+        font-size: 20px;
+        margin-left: 85px;
+    }
+
+    .section-e-1 {
+        font-size: 20px;
+        margin-left: 85px;
     }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 397px) {
+    .mistakes {
+        margin-left: 15px;
+    }
     .section-i-1 {
         font-size: 20px;
         margin-left: 10px;
+        display: none;
     }
 
     .section-i-2 {
         font-size: 20px;
         margin-left: 0px;
+        display: none;
     }
 
     .section-i-3 {
         font-size: 20px;
         margin-left: 29px;
+        display: none;
     }
 
     .section-i-4 {
         font-size: 20px;
         margin-left: 29px;
+        display: none;
     }
 
     .section-i-5 {
         font-size: 20px;
         margin-left: 53px;
+        display: none;
     }
 
     .section-i-6 {
         font-size: 20px;
         margin-left: 45px;
+        display: none;
+    }
+
+    .section-s-1 {
+        font-size: 20px;
+        margin-left: 40px;
+    }
+
+    .section-s-2 {
+        font-size: 20px;
+        margin-left: 40px;
+    }
+
+    .section-e-1 {
+        font-size: 20px;
+        margin-left: 40px;
     }
 }
 
@@ -138,6 +202,7 @@
     .section-i-1 {
         font-size: 20px;
         margin-left: 0px;
+        display: none;
     }
 
     .section-i-2 {
@@ -148,19 +213,38 @@
     .section-i-3 {
         font-size: 20px;
         margin-left: 18px;
+        display: none;
     }
 
     .section-i-4 {
         font-size: 20px;
         margin-left: 16px;
+        display: none;
     }
 
     .section-i-5 {
         font-size: 20px;
         margin-left: 35px;
+        display: none;
     }
 
     .section-i-6 {
+        font-size: 20px;
+        margin-left: 25px;
+        display: none;
+    }
+
+    .section-s-1 {
+        font-size: 20px;
+        margin-left: 25px;
+    }
+
+    .section-s-2 {
+        font-size: 20px;
+        margin-left: 25px;
+    }
+
+    .section-e-1 {
         font-size: 20px;
         margin-left: 25px;
     }

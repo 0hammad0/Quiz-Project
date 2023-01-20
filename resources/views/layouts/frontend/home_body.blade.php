@@ -22,6 +22,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('new_asset/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('new_asset/css/custom-style.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -152,7 +153,10 @@
     </div>
     <!-- Navbar End -->
 
+
+
     @yield('content')
+
 
 
 
@@ -171,6 +175,7 @@
             text-decoration: none;
             list-style-type: none;
             font-size: 25px;
+            padding-right: 22px
           ">
                 <li class="text-center bottom-menu-li">
                     <a href="{{ url('/') }}"><i class="fas fa-home bottom-menu-icon">
@@ -213,6 +218,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('new_asset/js/main.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
