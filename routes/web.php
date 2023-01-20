@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/question/create/{id}', [QuestionController::class, 'create']);
     Route::resource('/result', ResultController::class);
     Route::resource('/adminpanel', AdminPanelController::class);
+    Route::get('/seriesList/{id}', [ViewController::class, 'seriesList']);
     Route::get('/view/{id}', [ViewController::class, 'View']);
     Route::POST('/create_question', [CreateQuestionController::class, 'create_question']);
     Route::POST('/update_question/{id}', [CreateQuestionController::class, 'update_question']);
@@ -77,10 +78,8 @@ Route::middleware(['auth'])->group(function () {
     // Mistakes
     Route::resource('mistakes', MistakeController::class);
 
-    // Add logo
-    Route::get('/logo_change', [ViewController::class, 'logo_change']);
-    Route::POST('/logoChaning', [ViewController::class, 'chaningLogo']);
-    Route::POST('/logoSelection', [ViewController::class, 'logoSelection']);
+    // userDetail
+    Route::get('/userDetail/{id}', [ViewController::class, 'userDetail']);
 });
 
 // Google LoginURL

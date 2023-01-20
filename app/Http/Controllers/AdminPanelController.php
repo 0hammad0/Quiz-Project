@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Series;
+use App\Models\SeriesType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,11 +18,11 @@ class AdminPanelController extends Controller
     public function index()
     {
         if(Auth::user()->admin == 1) {
-            return view('adminpanel', [
-                'series' => Series::all()
+            return view('Series.seriesManu', [
+                'seriesType' => SeriesType::all()
             ]);
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 
@@ -35,7 +36,7 @@ class AdminPanelController extends Controller
         if(Auth::user()->admin == 1) {
             return view('Series_create');
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 
@@ -64,7 +65,7 @@ class AdminPanelController extends Controller
                 'series' => Series::findOrFail($id)
             ]);
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 
@@ -81,7 +82,7 @@ class AdminPanelController extends Controller
                 'question' => Question::findOrFail($id)
             ]);
         } else {
-            return redirect(route("/"));
+            return redirect("/");
         }
     }
 

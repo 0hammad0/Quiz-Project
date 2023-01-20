@@ -1,7 +1,7 @@
 @extends('layouts.backend.body')
 
 @section('title')
-    Aarticles list
+    Videos list
 @endsection
 
 @section('content')

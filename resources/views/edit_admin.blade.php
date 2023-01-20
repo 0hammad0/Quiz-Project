@@ -15,6 +15,7 @@
             @csrf
             <input type="hidden" name="series_id" value="{{ $question->series_id }}">
             <input type="hidden" name="question_type" value="{{ $question->question_type }}">
+            <input type="hidden" name="question_id" value="{{ $question->id }}">
             <div class="mb-3">
                 <label for="question" class="form-label">Question</label>
                 <input type="text" name="question" class="form-control" id="question"

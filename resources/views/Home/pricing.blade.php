@@ -1,4 +1,4 @@
-@extends('layouts.frontend.home_body')
+@extends('layouts.frontend.home_body_old')
 
 @section('title')
     Pricing

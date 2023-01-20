@@ -1,4 +1,4 @@
-@extends('layouts.frontend.Home_body')
+@extends('layouts.frontend.Home_body_old')
 
 @section('title')
     Section Menu
@@ -13,7 +13,7 @@
                     <a href="{{ url('series-id-redirect', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Series Simples
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            <i class="fas fa-chevron-right float-end text-danger section-i-1" style=""></i>
                         </button>
                     </a>
                 </div>
@@ -21,7 +21,7 @@
                     <a href="{{ url('series-id-redirect-examens', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Examens blancs
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            <i class="fas fa-chevron-right float-end text-danger section-i-2"></i>
                         </button>
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                     <a href="{{ url('/statistiques', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Statistiques
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            <i class="fas fa-chevron-right float-end text-danger section-i-3"></i>
                         </button>
                     </a>
                 </div>
@@ -38,7 +38,7 @@
                         <button type="button" class="series-btn q-btn">
                             Mes erreurs
                             @if ($mistakes == 0)
-                                <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                                <i class="fas fa-chevron-right float-end text-danger section-i-4"></i>
                             @else
                                 <span class="mistakes">{{ $mistakes }}</span>
                             @endif
@@ -54,7 +54,7 @@
                     <a href="{{ url('/articles', $seriesTypeID->id) }}">
                         <button type="button" class="series-btn q-btn">
                             Articles
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            <i class="fas fa-chevron-right float-end text-danger section-i-5"></i>
                         </button>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                     <a href={{ url('/learning-Video', $seriesTypeID->id) }}>
                         <button type="button" class="series-btn q-btn">
                             Learning
-                            <i class="fas fa-arrow-circle-right float-end text-danger" style="font-size: 20px"></i>
+                            <i class="fas fa-chevron-right float-end text-danger section-i-6"></i>
                         </button>
                     </a>
                 </div>

@@ -259,12 +259,12 @@ button {
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link {
-    color: #101ffa;
+    color: rgb(255, 102, 0);
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #0eb6e9;
+    color: rgb(255, 102, 0);
 }
 
 .call_section {
@@ -1218,8 +1218,167 @@ button {
 .mistakes {
     background-color: rgb(220, 53, 69);
     border-radius: 14px;
-    padding-right: 9px;
-    padding-left: 9px;
+    padding-right: 7px;
+    padding-left: 7px;
     color: white;
     font-size: 17px;
+    margin-left: 80px;
+}
+
+.section-i-1 {
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+.section-i-2 {
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+.section-i-3 {
+    font-size: 20px;
+    margin-left: 60px;
+}
+
+.section-i-4 {
+    font-size: 20px;
+    margin-left: 80px;
+}
+
+.section-i-5 {
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+.section-i-6 {
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+@media (max-width: 1186px) {
+    .section-i-1 {
+        font-size: 20px;
+        margin-left: 25px;
+    }
+
+    .section-i-2 {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .section-i-3 {
+        font-size: 20px;
+        margin-left: 45px;
+    }
+
+    .section-i-4 {
+        font-size: 20px;
+        margin-left: 50px;
+    }
+
+    .section-i-5 {
+        font-size: 20px;
+        margin-left: 80px;
+    }
+
+    .section-i-6 {
+        font-size: 20px;
+        margin-left: 71px;
+    }
+}
+
+@media (max-width: 450px) {
+    .section-i-1 {
+        font-size: 20px;
+        margin-left: 40px;
+    }
+
+    .section-i-2 {
+        font-size: 20px;
+        margin-left: 30px;
+    }
+
+    .section-i-3 {
+        font-size: 20px;
+        margin-left: 60px;
+    }
+
+    .section-i-4 {
+        font-size: 20px;
+        margin-left: 62px;
+    }
+
+    .section-i-5 {
+        font-size: 20px;
+        margin-left: 88px;
+    }
+
+    .section-i-6 {
+        font-size: 20px;
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 370px) {
+    .section-i-1 {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .section-i-2 {
+        font-size: 20px;
+        margin-left: 0px;
+    }
+
+    .section-i-3 {
+        font-size: 20px;
+        margin-left: 29px;
+    }
+
+    .section-i-4 {
+        font-size: 20px;
+        margin-left: 29px;
+    }
+
+    .section-i-5 {
+        font-size: 20px;
+        margin-left: 53px;
+    }
+
+    .section-i-6 {
+        font-size: 20px;
+        margin-left: 45px;
+    }
+}
+
+@media (max-width: 307px) {
+    .section-i-1 {
+        font-size: 20px;
+        margin-left: 0px;
+    }
+
+    .section-i-2 {
+        font-size: 20px;
+        margin-left: 0px;
+    }
+
+    .section-i-3 {
+        font-size: 20px;
+        margin-left: 18px;
+    }
+
+    .section-i-4 {
+        font-size: 20px;
+        margin-left: 16px;
+    }
+
+    .section-i-5 {
+        font-size: 20px;
+        margin-left: 35px;
+    }
+
+    .section-i-6 {
+        font-size: 20px;
+        margin-left: 25px;
+    }
 }

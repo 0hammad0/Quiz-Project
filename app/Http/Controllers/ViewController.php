@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logo;
+use App\Models\Test;
+use App\Models\Series;
+use App\Models\Mistake;
 use App\Models\Question;
-use Illuminate\Http\Request;
+use App\Models\SeriesType;
 use Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
@@ -20,66 +22,29 @@ class ViewController extends Controller
         }
     }
 
-    public function logo_change()
+    public function userDetail($id)
     {
-        if(Auth::user()->admin == 1) {
-            return view('logoChange', ([
-                'logo' => Logo::first()
-            ]));
-        } else {
-            return redirect("/");
-        }
+        $totalSeries = Test::where('user_id', Auth::id())->get();
+
+        $CorrectAnsers = Mistake::where('user_id', Auth::id())
+        ->where('result', 'T')
+        ->get();
+
+        $WrongAnswers = Mistake::where('user_id', Auth::id())
+        ->where('result', 'F')
+        ->get();
+
+        return view('Home.Profile', ([
+            'totalSeriesDoneByUser' => count($totalSeries),
+            'totalCorrectAnswers' => count($CorrectAnsers),
+            'totalWrongAnswers' => count($WrongAnswers)
+        ]));
     }
 
-    public function chaningLogo(Request $request)
+    public function seriesList($id)
     {
-        // storing image
-        if($request->logo_image){
-            $logo = Logo::first();
-            unlink(public_path().('/').$logo->logo_image);
-
-            $filename = time() . '_' . $request->file('logo_image')->getClientOriginalName();
-            $file = $request->file('logo_image');
-            $tmpFilePath = public_path().'/asset/images/';
-            $file = $file->move($tmpFilePath, $filename);
-            $image = 'asset/images/'.$filename;
-        } elseif($request->image == null) {
-            $image = $request->logo_image;
-        }
-
-        // dd($request->logo_word);
-        if(Auth::user()->admin == 1) {
-
-            Logo::updateorCreate([
-                'id' => 1,
-            ], [
-                'logo_word' => $request->logo_word,
-                'logo_image' => $image
-            ]);
-
-            return redirect()->back();
-
-        } else {
-            return redirect("/");
-        }
-    }
-
-    public function logoSelection(Request $request)
-    {
-        if(Auth::user()->admin == 1) {
-            $logo = Logo::first();
-
-            Logo::updateorCreate([
-                'id' => 1,
-                'logo_word' => $logo->logo_word,
-                'logo_image' => $logo->logo_image,
-            ], [
-                'selectedLogo' => $request->selectedLogo
-            ]);
-
-            return redirect()->back();
-        } else {
-            return redirect("/");
-        }
+        return view('adminpanel', ([
+            'series' => Series::where('series_type', SeriesType::findOrFail($id)->seriestype)->get()
+        ]));
     }
 }

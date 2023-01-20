@@ -16,16 +16,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('Home.Home', [
-            'seriesType' => SeriesType::all(),
-            'logo' => Logo::first()
+            'seriesType' => SeriesType::all()
         ]);
     }
 
     public function pricing()
     {
         return view('Home.pricing', [
-            'seriesType' => SeriesType::all(),
-            'logo' => Logo::first()
+            'seriesType' => SeriesType::all()
         ]);
     }
 
@@ -37,8 +35,7 @@ class HomeController extends Controller
     public function create()
     {
         return view('Home.Contact_us', [
-            'seriesType' => SeriesType::all(),
-            'logo' => Logo::first()
+            'seriesType' => SeriesType::all()
         ]);
     }
 

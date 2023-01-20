@@ -100,8 +100,12 @@ class CreateQuestionController extends Controller
     {
         if(Auth::user()->admin == 1) {
 
+            $ques = Question::findOrfail($request->question_id);
+
             // storing image
             if($request->image){
+
+                unlink(public_path().('/').$ques->file_path);
                 $filename = time() . '_' . $request->file('image')->getClientOriginalName();
                 $file = $request->file('image');
                 $tmpFilePath = public_path().'/asset/images/';
@@ -114,6 +118,7 @@ class CreateQuestionController extends Controller
             // storing audio
             if($request->audio){
 
+                unlink(public_path().('/').$ques->audio_path);
                 $filename = time() . '_' . $request->file('audio')->getClientOriginalName();
                 $file = $request->file('audio');
                 $tmpFilePath = public_path().'/asset/audio/';
@@ -126,6 +131,7 @@ class CreateQuestionController extends Controller
             // storing video
             if($request->video){
 
+                unlink(public_path().('/').$ques->video_path);
                 $filename = time() . '_' . $request->file('video')->getClientOriginalName();
                 $file = $request->file('video');
                 $tmpFilePath = public_path().'/asset/video/';
@@ -138,6 +144,7 @@ class CreateQuestionController extends Controller
             // storing Answer video
             if($request->ans_video){
 
+                unlink(public_path().('/').$ques->ans_video_path);
                 $filename = time() . '_' . $request->file('ans_video')->getClientOriginalName();
                 $file = $request->file('ans_video');
                 $tmpFilePath = public_path().'/asset/video/';

@@ -152,6 +152,7 @@
             var timer = document.getElementById('timer');
             var time = 300;
             var time_qu = setInterval(timerr, 1000);
+            console.log(time);
 
             function timerr() {
                 if (time == 0 || time < 0) {

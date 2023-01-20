@@ -17,8 +17,7 @@
                                 <a href="{{ route('series.show', $disc) }}">
                                     <button type="button" class="series-btn q-btn">
                                         {{ $disc->name }} &nbsp;&nbsp;&nbsp;
-                                        <i class="fas fa-arrow-circle-right float-end text-danger"
-                                            style="font-size: 20px"></i>
+                                        <i class="fas fa-chevron-right float-end text-danger section-i-4"></i>
                                     </button>
                                 </a>
                             </div>
@@ -38,8 +37,7 @@
                                 <a href="{{ route('series.show', $cla) }}">
                                     <button type="button" class="series-btn q-btn">
                                         {{ $cla->name }} &nbsp;&nbsp;&nbsp;
-                                        <i class="fas fa-arrow-circle-right float-end text-danger"
-                                            style="font-size: 20px"></i>
+                                        <i class="fas fa-chevron-right float-end text-danger section-i-4"></i>
                                     </button>
                                 </a>
                             </div>

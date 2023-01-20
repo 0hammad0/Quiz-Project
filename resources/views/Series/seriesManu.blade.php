@@ -1,7 +1,7 @@
 @extends('layouts.backend.body')
 
 @section('title')
-    Video Show
+    Series list
 @endsection
 
 @section('content')
@@ -19,33 +19,11 @@
                             Tables
                         </li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Learning Video Show</h6>
+                    <h6 class="font-weight-bolder mb-0">Series List</h6>
                 </nav>
             </div>
         </nav>
         <!-- End Navbar -->
-
-        <div class="container row">
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div
-                            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">create</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <h4 class="mb-0">Create Videos</h4>
-                        </div>
-                    </div>
-                    <hr class="dark horizontal my-0">
-                    <div class="card-footer p-3">
-                        <p class="mb-0"><a href="{{ url('learningVideo/create', $series->id) }}"
-                                class="text-success text-sm font-weight-bolder">Create</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
@@ -53,7 +31,7 @@
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">
-                                    List of Videos
+                                    List of Series Items
                                 </h6>
                             </div>
                         </div>
@@ -73,7 +51,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($videos as $vid)
+                                        @foreach ($seriesType as $ser)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
@@ -84,11 +62,7 @@
                                                 </td>
                                                 <td>
                                                     <p class="text-xs font-weight-bold mb-0">
-                                                    <h6 class="mb-0 text-sm"></h6>
-                                                    <iframe width="200" height="150" src="{{ $vid->videoLink }}"
-                                                        frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        allowfullscreen></iframe>
+                                                    <h6 class="mb-0 text-sm">{{ $ser->seriestype }}</h6>
                                                     </p>
                                                 </td>
                                                 <td>
@@ -99,10 +73,10 @@
                                                 </td>
                                                 <td class="align-middle text-center"></td>
                                                 <td class="align-middle">
-                                                    <a href="{{ url('/learningVideos/delete', $vid->id) }}"
+                                                    <a href="{{ url('seriesList', $ser->id) }}"
                                                         class="text-secondary font-weight-bold text-xs"
                                                         data-toggle="tooltip" data-original-title="Edit user">
-                                                        delete
+                                                        View
                                                     </a>
                                                 </td>
                                             </tr>
@@ -111,6 +85,27 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container row">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div
+                            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="material-icons opacity-10">create</i>
+                        </div>
+                        <div class="text-end pt-1">
+                            <h4 class="mb-0">Create Series</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                    <div class="card-footer p-3">
+                        <p class="mb-0"><a href="{{ route('adminpanel.create') }}"
+                                class="text-success text-sm font-weight-bolder">Create</a>
                     </div>
                 </div>
             </div>

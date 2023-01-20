@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('asset/images/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('asset/images/PermisGo-Logo.jpeg') }}">
     <title>@yield('title')</title>
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css" />
@@ -24,18 +24,18 @@
 
     @yield('content')
 
-    {{-- <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
     <script src="{{ asset('asset/js/popper.min.js') }}"></script>
     <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('asset/js/jquery-3.0.0.min.js') }}"></script>
     <script src="{{ asset('asset/js/plugin.js') }}"></script>
     <script src="{{ asset('asset/js/jquery.mCustomScrollbar.concat.min.j') }}s"></script>
-    <script src="{{ asset('asset/js/custom.js') }}"></script> --}}
-    {{-- <script src="{{ asset('asset/js/owl.carousel.js') }}"></script>     --}}
-    {{-- <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="{{ asset('asset/js/custom.js') }}"></script>
+    <script src="{{ asset('asset/js/owl.carousel.js') }}"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
-    </script> --}}
+    </script>
 
     <script>
         function validate() {
